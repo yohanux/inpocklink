@@ -218,19 +218,19 @@
                         <div class="section-header">
                             <h2>링크 클릭 수 순위</h2>
                             <div class="dropdown">
-                                <button class="dropdown-btn">
-                                    <span>최근 7일</span>
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                        <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5"/>
-                                    </svg>
-                                </button>
+                                <span>최근 7일</span>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2"/>
+                                </svg>
                             </div>
                         </div>
                         
                         <div class="ranking-options">
                             <label class="checkbox-option">
                                 <input type="checkbox" id="include-private">
-                                <span class="checkmark"></span>
+                                <span class="checkmark">
+                                    <img src="icon/icon-checkbox-disabled.svg" alt="체크박스" class="checkbox-icon">
+                                </span>
                                 비공개 링크 포함
                             </label>
                         </div>
@@ -265,16 +265,166 @@
                 </div>
 
                 <div class="tab-content" id="newsletter-tab">
-                    <div class="newsletter-content">
-                        <h3>소식받기 통계</h3>
-                        <p>소식받기 관련 통계 내용이 여기에 표시됩니다.</p>
+                    <div class="newsletter-summary">
+                        <div class="newsletter-card">
+                            <div class="newsletter-text">
+                                <p>나의 링크 소식을</p>
+                                <p><span class="highlight">총 2명</span>이 기다리고 있어요!</p>
+                            </div>
+                        </div>
+                        <div class="newsletter-card">
+                            <div class="newsletter-text">
+                                <p>10월 15일에는</p>
+                                <p>전날보다 <span class="highlight increase">10% 증가</span>했어요</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="newsletter-chart">
+                        <div class="chart-header">
+                            <h3>소식받기 신청 변화</h3>
+                            <p class="chart-date">2025. 10. 15. 14:23 기준</p>
+                        </div>
+                        <div class="chart-container">
+                            <img src="resource/graph.svg" alt="소식받기 신청 변화 차트" class="chart-image">
+                        </div>
+                        <div class="chart-controls">
+                            <button class="chart-btn">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                            </button>
+                            <span class="chart-period">2025.10.12 ~ 2025.10.15</span>
+                            <button class="chart-btn">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 <div class="tab-content" id="visit-tab">
-                    <div class="visit-content">
-                        <h3>방문 통계</h3>
-                        <p>방문 관련 통계 내용이 여기에 표시됩니다.</p>
+                    <div class="visit-summary">
+                        <div class="visit-card">
+                            <div class="visit-text">
+                                <p><span class="highlight">총 44명</span>이</p>
+                                <p>내 링크에 방문했습니다!</p>
+                            </div>
+                        </div>
+                        <div class="visit-card">
+                            <div class="visit-text">
+                                <p>10월 15일에는</p>
+                                <p>전날보다 <span class="highlight decrease">66.7% 감소</span>했어요</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="visit-chart">
+                        <div class="chart-header">
+                            <h3>페이지 방문자수 변화</h3>
+                            <p class="chart-date">2025. 10. 15. 14:23 기준</p>
+                        </div>
+                        <div class="chart-container">
+                            <img src="resource/graph.svg" alt="페이지 방문자수 변화 차트" class="chart-image">
+                        </div>
+                        <div class="chart-controls">
+                            <button class="chart-btn">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                            </button>
+                            <span class="chart-period">2025.10.12 ~ 2025.10.15</span>
+                            <button class="chart-btn">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="visit-heatmap">
+                        <div class="section-header">
+                            <div class="header-info">
+                                <h3>요일/시간대별 방문 분포</h3>
+                                <p class="chart-date">2025. 10. 15. 14:23 기준</p>
+                            </div>
+                            <div class="dropdown">
+                                <span>최근 7일</span>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="heatmap-container">
+                            <img src="resource/chart.svg" alt="요일/시간대별 방문 분포 히트맵" class="heatmap-image">
+                        </div>
+                        <div class="chart-controls">
+                            <button class="chart-btn">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                            </button>
+                            <span class="chart-period">2025.10.12 ~ 2025.10.15</span>
+                            <button class="chart-btn">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="visit-traffic">
+                        <div class="section-header">
+                            <div class="header-info">
+                                <h3>유입경로</h3>
+                                <p class="chart-date">2025. 10. 15. 14:23 기준</p>
+                            </div>
+                            <div class="dropdown">
+                                <span>최근 7일</span>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="traffic-list">
+                            <div class="traffic-header">
+                                <span class="traffic-column">유입경로</span>
+                                <span class="traffic-column">방문자수</span>
+                                <span class="traffic-column">비중</span>
+                                <span class="traffic-column"></span>
+                            </div>
+                            <div class="traffic-item">
+                                <div class="traffic-source">
+                                    <div class="traffic-icon">
+                                        <img src="icon/icon-thumb-direct.svg" alt="직접 접속" width="24" height="24">
+                                    </div>
+                                    <span class="traffic-name">직접 접속</span>
+                                </div>
+                                <span class="traffic-count">0</span>
+                                <span class="traffic-percentage">83.3%</span>
+                                <div class="traffic-arrow">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="traffic-item">
+                                <div class="traffic-source">
+                                    <div class="traffic-icon">
+                                        <img src="icon/icon-thumb-link.svg" alt="인포크링크" width="24" height="24">
+                                    </div>
+                                    <span class="traffic-name">인포크링크</span>
+                                </div>
+                                <span class="traffic-count">0</span>
+                                <span class="traffic-percentage">16.7%</span>
+                                <div class="traffic-arrow">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

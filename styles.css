@@ -429,23 +429,20 @@ body {
 .checkmark {
     width: 24px;
     height: 24px;
-    background-color: var(--color-gray-200);
-    border-radius: var(--radius-400);
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
 }
 
-.checkbox-option input[type="checkbox"]:checked + .checkmark {
-    background-color: var(--color-orange-800);
+.checkbox-icon {
+    width: 24px;
+    height: 24px;
+    transition: all 0.2s ease;
 }
 
-.checkbox-option input[type="checkbox"]:checked + .checkmark::after {
-    content: "✓";
-    color: var(--color-white);
-    font-size: 14px;
-    font-weight: bold;
+.checkbox-option input[type="checkbox"]:checked + .checkmark .checkbox-icon {
+    content: url('icon/icon-checkbox-active.svg');
 }
 
 .ranking-item {
@@ -497,8 +494,224 @@ body {
     text-align: right;
 }
 
-/* Newsletter and Visit Tab Styles */
-.newsletter-content,
+/* Newsletter Tab Styles */
+.newsletter-summary {
+    display: flex;
+    gap: var(--spacing-200);
+    margin-bottom: var(--spacing-300);
+}
+
+.newsletter-card {
+    flex: 1;
+    background-color: var(--color-white);
+    border-radius: var(--radius-500);
+    padding: var(--spacing-400);
+}
+
+.newsletter-text p {
+    font: var(--font-heading-3-bold);
+    color: var(--color-gray-800);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.newsletter-text p:first-child {
+    margin-bottom: var(--spacing-050);
+}
+
+/* Newsletter Card Text Colors */
+.newsletter-text .highlight {
+    color: var(--color-orange-800); /* 기본: 주황색 (증가) */
+}
+
+.newsletter-text .highlight.maintain {
+    color: var(--color-yellow-200); /* 유지: 노란색 */
+}
+
+.newsletter-text .highlight.increase {
+    color: var(--color-orange-800); /* 증가: 주황색 */
+}
+
+.newsletter-text .highlight.decrease {
+    color: var(--color-blue-500); /* 감소: 파란색 */
+}
+
+.newsletter-text .highlight.neutral {
+    color: var(--color-gray-800); /* 기본: 그레이800 */
+}
+
+.newsletter-chart {
+    background-color: var(--color-white);
+    border-radius: var(--radius-500);
+    padding: var(--spacing-400);
+}
+
+/* Visit Tab Styles */
+.visit-summary {
+    display: flex;
+    gap: var(--spacing-200);
+    margin-bottom: var(--spacing-300);
+}
+
+.visit-card {
+    flex: 1;
+    background-color: var(--color-white);
+    border-radius: var(--radius-500);
+    padding: var(--spacing-400);
+}
+
+.visit-text p {
+    font: var(--font-heading-3-bold);
+    color: var(--color-gray-800);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.visit-text p:first-child {
+    margin-bottom: var(--spacing-050);
+}
+
+/* Visit Card Text Colors */
+.visit-text .highlight {
+    color: var(--color-orange-800); /* 기본: 주황색 (증가) */
+}
+
+.visit-text .highlight.maintain {
+    color: var(--color-yellow-200); /* 유지: 노란색 */
+}
+
+.visit-text .highlight.increase {
+    color: var(--color-orange-800); /* 증가: 주황색 */
+}
+
+.visit-text .highlight.decrease {
+    color: var(--color-blue-500); /* 감소: 파란색 */
+}
+
+.visit-text .highlight.neutral {
+    color: var(--color-gray-800); /* 기본: 그레이800 */
+}
+
+.visit-chart {
+    background-color: var(--color-white);
+    border-radius: var(--radius-500);
+    padding: var(--spacing-400);
+    margin-bottom: var(--spacing-300);
+}
+
+.visit-heatmap {
+    background-color: var(--color-white);
+    border-radius: var(--radius-500);
+    padding: var(--spacing-400);
+    margin-bottom: var(--spacing-300);
+}
+
+.heatmap-container {
+    margin: var(--spacing-200) 0;
+}
+
+.heatmap-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.visit-traffic {
+    background-color: var(--color-white);
+    border-radius: var(--radius-500);
+    padding: var(--spacing-400);
+}
+
+.traffic-list {
+    margin-top: var(--spacing-200);
+}
+
+.traffic-header {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-200) 0;
+    border-bottom: 1px solid var(--color-gray-200);
+    margin-bottom: var(--spacing-100);
+}
+
+.traffic-column {
+    flex: 1;
+    font: var(--font-paragraph-2-bold);
+    color: var(--color-gray-500);
+    text-align: center;
+}
+
+.traffic-column:first-child {
+    text-align: left;
+}
+
+.traffic-item {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-200) 0;
+    border-bottom: 1px solid var(--color-gray-100);
+}
+
+.traffic-item:last-child {
+    border-bottom: none;
+}
+
+.traffic-source {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-100);
+}
+
+.traffic-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.traffic-icon img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.traffic-name {
+    font: var(--font-paragraph-1-regular);
+    color: var(--color-gray-800);
+}
+
+.traffic-count {
+    flex: 1;
+    font: var(--font-paragraph-1-bold);
+    color: var(--color-gray-800);
+    text-align: center;
+}
+
+.traffic-percentage {
+    flex: 1;
+    font: var(--font-paragraph-1-bold);
+    color: var(--color-orange-800);
+    text-align: center;
+}
+
+.traffic-arrow {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+}
+
+.traffic-arrow svg {
+    width: 24px;
+    height: 24px;
+    color: var(--color-gray-400);
+}
+
+/* Visit Tab Styles */
 .visit-content {
     background-color: var(--color-white);
     border-radius: var(--radius-500);
@@ -506,14 +719,12 @@ body {
     text-align: center;
 }
 
-.newsletter-content h3,
 .visit-content h3 {
     font: var(--font-heading-3-bold);
     color: var(--color-gray-800);
     margin: 0 0 var(--spacing-200) 0;
 }
 
-.newsletter-content p,
 .visit-content p {
     font: var(--font-paragraph-1-regular);
     color: var(--color-gray-600);
