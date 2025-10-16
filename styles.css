@@ -1369,6 +1369,12 @@ body {
         margin-bottom: var(--spacing-050) !important;
     }
     
+    .visit-chart .chart-period,
+    .visit-heatmap .chart-period {
+        font: var(--font-paragraph-2-regular);
+        color: var(--color-gray-800);
+    }
+    
     .visit-heatmap .heatmap-container {
         height: 407px;
         margin: var(--spacing-200) 0;
