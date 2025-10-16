@@ -1305,10 +1305,11 @@ body {
         object-fit: contain;
     }
     
-    .newsletter-chart .chart-controls {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    /* 모바일 차트 컨트롤 공통 스타일 */
+    .newsletter-chart .chart-controls,
+    .link-chart .chart-controls,
+    .visit-chart .chart-controls,
+    .visit-heatmap .chart-controls {
         gap: var(--spacing-150);
     }
     
@@ -1373,6 +1374,10 @@ body {
     .visit-heatmap .chart-period {
         font: var(--font-paragraph-2-regular);
         color: var(--color-gray-800);
+    }
+    
+    .visit-chart .chart-container {
+        margin: var(--spacing-200) 0;
     }
     
     .visit-heatmap .heatmap-container {
@@ -1507,12 +1512,6 @@ body {
         object-fit: contain;
     }
     
-    .link-chart .chart-controls {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: var(--spacing-150);
-    }
     
     .link-chart .chart-btn {
         background-color: var(--color-white);
