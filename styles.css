@@ -652,11 +652,6 @@ body {
     display: flex;
     align-items: center;
     padding: var(--spacing-200) 0;
-    border-bottom: 1px solid var(--color-gray-100);
-}
-
-.traffic-item:last-child {
-    border-bottom: none;
 }
 
 .traffic-source {
