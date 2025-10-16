@@ -254,6 +254,8 @@ body {
     color: var(--color-gray-600);
     cursor: pointer;
     transition: all 0.2s ease;
+    outline: none !important; /* 클릭 시 스트로크 강제 제거 */
+    box-shadow: none !important; /* 박스 섀도우도 제거 */
 }
 
 .tab.active {
@@ -263,6 +265,21 @@ body {
 
 .tab:hover:not(.active) {
     background-color: var(--color-white);
+}
+
+.tab:focus {
+    outline: none !important; /* 포커스 시 스트로크 강제 제거 */
+    box-shadow: none !important; /* 포커스 시 박스 섀도우 제거 */
+}
+
+.tab:focus-visible {
+    outline: none !important; /* 키보드 포커스 시에도 스트로크 강제 제거 */
+    box-shadow: none !important; /* 키보드 포커스 시 박스 섀도우 제거 */
+}
+
+.tab:active {
+    outline: none !important; /* 활성 상태에서도 스트로크 제거 */
+    box-shadow: none !important; /* 활성 상태에서도 박스 섀도우 제거 */
 }
 
 /* Tab Content */

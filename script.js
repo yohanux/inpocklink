@@ -72,9 +72,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function setupEventListeners() {
         // 탭 클릭 이벤트
         tabs.forEach(tab => {
-            tab.addEventListener('click', function() {
+            tab.addEventListener('click', function(e) {
+                e.preventDefault(); // 기본 동작 방지
                 const tabType = this.textContent.trim();
                 switchTab(tabType);
+                this.blur(); // 클릭 후 포커스 제거
             });
         });
         
