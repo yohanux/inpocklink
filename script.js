@@ -117,11 +117,42 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
+        // 모든 탭 콘텐츠 숨기기
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabContents.forEach(content => content.classList.remove('active'));
+        
+        // 클릭된 탭에 해당하는 콘텐츠 표시
+        let targetTabId = '';
+        
+        switch(tabType) {
+            case '요약':
+                targetTabId = 'summary-tab';
+                break;
+            case '링크':
+                targetTabId = 'link-tab';
+                break;
+            case '소식받기':
+                targetTabId = 'newsletter-tab';
+                break;
+            case '방문':
+                targetTabId = 'visit-tab';
+                break;
+        }
+        
+        if (targetTabId) {
+            const targetContent = document.getElementById(targetTabId);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
+        }
+        
         // 현재 탭 업데이트
         currentTab = getTabKey(tabType);
         
         // 탭별 콘텐츠 로드
         loadTabContent(currentTab);
+        
+        console.log(`탭 전환: ${tabType} -> ${targetTabId}`);
     }
     
     // 탭 타입을 키로 변환

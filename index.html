@@ -114,8 +114,8 @@
                     <button class="tab">방문</button>
                 </div>
 
-                <!-- Statistics Cards -->
-                <div class="stats-container">
+                <!-- 탭 컨테이너들 -->
+                <div class="tab-content active" id="summary-tab">
                     <div class="stats-card">
                         <div class="stats-header">
                             <h2>2025년 10월 15일</h2>
@@ -180,6 +180,101 @@
                                 <span class="status">공개</span>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="link-tab">
+                    <div class="link-summary">
+                        <div class="summary-text">
+                            <p>10월 15일에는</p>
+                            <p>전날과 <span class="highlight">0% 동일하게 유지</span>했어요</p>
+                        </div>
+                    </div>
+                    
+                    <div class="link-chart">
+                        <div class="chart-header">
+                            <h3>전체 클릭수 변화</h3>
+                            <p class="chart-date">2025. 10. 15. 14:23 기준</p>
+                        </div>
+                        <div class="chart-container">
+                            <img src="resource/graph.svg" alt="전체 클릭수 변화 차트" class="chart-image">
+                        </div>
+                        <div class="chart-controls">
+                            <button class="chart-btn">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                            </button>
+                            <span class="chart-period">2025.10.12 ~ 2025.10.15</span>
+                            <button class="chart-btn">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="link-ranking">
+                        <div class="section-header">
+                            <h2>링크 클릭 수 순위</h2>
+                            <div class="dropdown">
+                                <button class="dropdown-btn">
+                                    <span>최근 7일</span>
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="ranking-options">
+                            <label class="checkbox-option">
+                                <input type="checkbox" id="include-private">
+                                <span class="checkmark"></span>
+                                비공개 링크 포함
+                            </label>
+                        </div>
+                        
+                        <div class="ranking-list">
+                            <div class="ranking-item">
+                                <div class="rank">1</div>
+                                <div class="link-info">
+                                    <span class="link-title">앤커 나노 보조배터리 (5000mAh)</span>
+                                    <span class="link-count">0</span>
+                                    <span class="status">공개</span>
+                                </div>
+                            </div>
+                            <div class="ranking-item">
+                                <div class="rank">2</div>
+                                <div class="link-info">
+                                    <span class="link-title">앤커 나노 충전기 (30W)</span>
+                                    <span class="link-count">0</span>
+                                    <span class="status">공개</span>
+                                </div>
+                            </div>
+                            <div class="ranking-item">
+                                <div class="rank">3</div>
+                                <div class="link-info">
+                                    <span class="link-title">앤커 C to C 케이블 (180cm)</span>
+                                    <span class="link-count">0</span>
+                                    <span class="status">공개</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="newsletter-tab">
+                    <div class="newsletter-content">
+                        <h3>소식받기 통계</h3>
+                        <p>소식받기 관련 통계 내용이 여기에 표시됩니다.</p>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="visit-tab">
+                    <div class="visit-content">
+                        <h3>방문 통계</h3>
+                        <p>방문 관련 통계 내용이 여기에 표시됩니다.</p>
                     </div>
                 </div>
             </div>

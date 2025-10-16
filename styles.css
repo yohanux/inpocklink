@@ -5,6 +5,26 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow-y: auto; /* 필요할 때만 스크롤 */
+}
+
+/* 스크롤바 숨기기 (Webkit 브라우저) */
+html::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+/* 스크롤바 숨기기 (Firefox) */
+html {
+    scrollbar-width: none;
+}
+
+/* 스크롤바 숨기기 (IE/Edge) */
+html {
+    -ms-overflow-style: none;
+}
+
 body {
     font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background-color: var(--color-gray-100);
@@ -47,10 +67,14 @@ body {
     justify-content: center;
     align-items: flex-start;
     padding: var(--spacing-500) var(--spacing-600);
+    margin-left: 240px; /* 사이드바 너비만큼 왼쪽 마진 */
 }
 
 /* PC Layout Styles */
 .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 240px;
     height: 100vh;
     background-color: var(--color-white);
@@ -59,6 +83,7 @@ body {
     flex-direction: column;
     gap: var(--spacing-800);
     flex-shrink: 0;
+    z-index: 1000;
 }
 
 .logo {
@@ -240,6 +265,244 @@ body {
     background-color: var(--color-white);
 }
 
+/* Tab Content */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Link Tab Styles */
+.link-summary {
+    background-color: var(--color-white);
+    border-radius: var(--radius-500);
+    padding: var(--spacing-400);
+    margin-bottom: var(--spacing-300);
+}
+
+.summary-text p {
+    font: var(--font-heading-3-bold);
+    color: var(--color-gray-800);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.summary-text p:first-child {
+    margin-bottom: var(--spacing-050);
+}
+
+.highlight {
+    color: var(--color-yellow-200);
+}
+
+.link-chart {
+    background-color: var(--color-white);
+    border-radius: var(--radius-500);
+    padding: var(--spacing-400);
+    margin-bottom: var(--spacing-300);
+}
+
+.chart-header h3 {
+    font: var(--font-heading-3-bold);
+    color: var(--color-gray-800);
+    margin: 0 0 var(--spacing-100) 0;
+}
+
+.chart-date {
+    font: var(--font-paragraph-2-regular);
+    color: var(--color-gray-500);
+    margin: 0;
+}
+
+.chart-container {
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: var(--spacing-300) 0;
+    overflow: hidden;
+}
+
+.chart-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.chart-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-300);
+}
+
+.chart-btn {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-400);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.chart-btn:hover {
+    background-color: var(--color-gray-100);
+}
+
+.chart-period {
+    font: var(--font-paragraph-2-regular);
+    color: var(--color-gray-800);
+}
+
+.link-ranking {
+    background-color: var(--color-white);
+    border-radius: var(--radius-500);
+    padding: var(--spacing-400);
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-300);
+}
+
+.section-header h2 {
+    font: var(--font-heading-3-bold);
+    color: var(--color-gray-800);
+    margin: 0;
+}
+
+.dropdown-btn {
+    background-color: var(--color-gray-100);
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-300);
+    padding: var(--spacing-100) var(--spacing-150);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-100);
+    cursor: pointer;
+    font: var(--font-paragraph-2-regular);
+    color: var(--color-gray-800);
+}
+
+.ranking-options {
+    margin-bottom: var(--spacing-300);
+}
+
+.checkbox-option {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-100);
+    cursor: pointer;
+    font: var(--font-paragraph-2-regular);
+    color: var(--color-gray-700);
+}
+
+.checkbox-option input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 24px;
+    height: 24px;
+    background-color: var(--color-gray-200);
+    border-radius: var(--radius-400);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.checkbox-option input[type="checkbox"]:checked + .checkmark {
+    background-color: var(--color-orange-800);
+}
+
+.checkbox-option input[type="checkbox"]:checked + .checkmark::after {
+    content: "✓";
+    color: var(--color-white);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.ranking-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-100);
+    padding: var(--spacing-200) 0;
+    border-bottom: 1px solid var(--color-gray-200);
+}
+
+.ranking-item:last-child {
+    border-bottom: none;
+}
+
+.rank {
+    width: 24px;
+    text-align: center;
+    font: var(--font-paragraph-1-bold);
+    color: var(--color-orange-800);
+}
+
+.link-info {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-200);
+}
+
+.link-title {
+    flex: 1;
+    font: var(--font-paragraph-1-regular);
+    color: var(--color-gray-800);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.link-count {
+    font: var(--font-paragraph-1-bold);
+    color: var(--color-gray-800);
+    text-align: center;
+    min-width: 40px;
+}
+
+.status {
+    font: var(--font-paragraph-1-regular);
+    color: var(--color-blue-500);
+    min-width: 40px;
+    text-align: right;
+}
+
+/* Newsletter and Visit Tab Styles */
+.newsletter-content,
+.visit-content {
+    background-color: var(--color-white);
+    border-radius: var(--radius-500);
+    padding: var(--spacing-500);
+    text-align: center;
+}
+
+.newsletter-content h3,
+.visit-content h3 {
+    font: var(--font-heading-3-bold);
+    color: var(--color-gray-800);
+    margin: 0 0 var(--spacing-200) 0;
+}
+
+.newsletter-content p,
+.visit-content p {
+    font: var(--font-paragraph-1-regular);
+    color: var(--color-gray-600);
+    margin: 0;
+}
+
 /* Statistics Container */
 .stats-container {
     display: flex;
@@ -251,6 +514,7 @@ body {
     background-color: var(--color-white);
     border-radius: var(--radius-500);
     padding: var(--spacing-400);
+    margin-bottom: var(--spacing-200);
 }
 
 .stats-header {
