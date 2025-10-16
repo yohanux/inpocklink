@@ -1,0 +1,38 @@
+/* 타이포그래피 토큰 */
+:root {
+  /* title-1 */
+  --font-title-1-bold: 600 48px/54px "Pretendard", sans-serif;
+  --font-title-1-regular: 400 48px/54px "Pretendard", sans-serif;
+  
+  /* title-2 */
+  --font-title-2-bold: 600 36px/42px "Pretendard", sans-serif;
+  --font-title-2-regular: 400 36px/42px "Pretendard", sans-serif;
+  
+  /* heading-1 */
+  --font-heading-1-bold: 600 26px/32px "Pretendard", sans-serif;
+  --font-heading-1-regular: 400 26px/32px "Pretendard", sans-serif;
+  
+  /* heading-2 */
+  --font-heading-2-bold: 600 22px/28px "Pretendard", sans-serif;
+  --font-heading-2-regular: 400 22px/28px "Pretendard", sans-serif;
+  
+  /* heading-3 */
+  --font-heading-3-bold: 600 20px/26px "Pretendard", sans-serif;
+  --font-heading-3-regular: 400 20px/26px "Pretendard", sans-serif;
+  
+  /* paragraph-1 */
+  --font-paragraph-1-bold: 600 16px/22px "Pretendard", sans-serif;
+  --font-paragraph-1-regular: 400 16px/22px "Pretendard", sans-serif;
+  
+  /* paragraph-2 */
+  --font-paragraph-2-bold: 600 14px/20px "Pretendard", sans-serif;
+  --font-paragraph-2-regular: 400 14px/20px "Pretendard", sans-serif;
+  
+  /* small-text-1 */
+  --font-small-text-1-bold: 600 12px/18px "Pretendard", sans-serif;
+  --font-small-text-1-regular: 400 12px/18px "Pretendard", sans-serif;
+  
+  /* small-text-2 */
+  --font-small-text-2-bold: 600 10px/16px "Pretendard", sans-serif;
+  --font-small-text-2-regular: 400 10px/16px "Pretendard", sans-serif;
+}

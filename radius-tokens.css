@@ -1,0 +1,14 @@
+/* radius 토큰 */
+:root {
+  --radius-000: 0px;
+  --radius-050: 2px;
+  --radius-100: 4px;
+  --radius-200: 6px;
+  --radius-300: 8px;
+  --radius-400: 12px;
+  --radius-500: 16px;
+  --radius-600: 20px;
+  --radius-700: 24px;
+  --radius-800: 32px;
+  --radius-900: 40px;
+}

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인포크 통계 대시보드</title>
+    <link rel="stylesheet" href="color-tokens.css">
+    <link rel="stylesheet" href="typography-tokens.css">
+    <link rel="stylesheet" href="radius-tokens.css">
+    <link rel="stylesheet" href="spacing-tokens.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- PC Layout -->
+    <div class="pc-layout">
+        <div class="pc-container">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+            <div class="logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMTIwIDI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMTIgMkwyIDhWMTZMMTIgMjJMMjIgMTZWOFoiIGZpbGw9IiNGRjVCMUEiLz4KPC9zdmc+" alt="인포크 로고">
+            </div>
+            
+            <!-- Navigation -->
+            <nav class="navigation">
+                <a href="#" class="nav-item active">
+                    <div class="nav-icon">
+                        <img src="icon/icon-gnb-link.svg" alt="링크" width="24" height="24">
+                    </div>
+                    <span>링크</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <div class="nav-icon">
+                        <img src="icon/icon-gnb-manager.svg" alt="매니저" width="24" height="24">
+                    </div>
+                    <span>매니저</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <div class="nav-icon">
+                        <img src="icon/icon-gnb-deal.svg" alt="딜" width="24" height="24">
+                    </div>
+                    <span>딜</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <div class="nav-icon">
+                        <img src="icon/icon-gnb-chat.svg" alt="채팅" width="24" height="24">
+                    </div>
+                    <span>채팅</span>
+                    <div class="badge">9</div>
+                </a>
+                <a href="#" class="nav-item">
+                    <div class="nav-icon">
+                        <img src="icon/icon-gnb-all.svg" alt="전체" width="24" height="24">
+                    </div>
+                    <span>전체</span>
+                </a>
+            </nav>
+
+            <!-- Cards -->
+            <div class="cards">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>방문자</h3>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <div class="stat-item">
+                            <span>전체</span>
+                            <span class="value">123만 4567</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>오늘</span>
+                            <span class="value">9,876</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>실시간</span>
+                            <span class="value">1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>소식받기</h3>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <div class="stat-item">
+                            <span>전체</span>
+                            <span class="value">26,548</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </aside>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Main Content -->
+                <main class="main-content">
+            <div class="page-header">
+                <h1>통계</h1>
+            </div>
+
+            <div class="content-container">
+                <!-- Tabs -->
+                <div class="tabs">
+                    <button class="tab active">요약</button>
+                    <button class="tab">링크</button>
+                    <button class="tab">소식받기</button>
+                    <button class="tab">방문</button>
+                </div>
+
+                <!-- Statistics Cards -->
+                <div class="stats-container">
+                    <div class="stats-card">
+                        <div class="stats-header">
+                            <h2>2025년 10월 15일</h2>
+                            <div class="dropdown">
+                                <span>오늘</span>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <h3>페이지 방문자</h3>
+                                <div class="stat-value">3,213</div>
+                                <div class="stat-change negative">-100%</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>링크 클릭수</h3>
+                                <div class="stat-value">456</div>
+                                <div class="stat-change neutral">-0%</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>소식 받기</h3>
+                                <div class="stat-value">12</div>
+                                <div class="stat-change neutral">-0%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ranking -->
+                    <div class="ranking-card">
+                        <h2>오늘 링크 클릭 수 순위</h2>
+                        <div class="ranking-list">
+                            <div class="ranking-item">
+                                <span class="rank">1</span>
+                                <span class="title">앤커 나노 보조배터리 (5000mAh)</span>
+                                <span class="count">0</span>
+                                <span class="status">공개</span>
+                            </div>
+                            <div class="ranking-item">
+                                <span class="rank">2</span>
+                                <span class="title">앤커 나노 충전기 (30W)</span>
+                                <span class="count">0</span>
+                                <span class="status">공개</span>
+                            </div>
+                            <div class="ranking-item">
+                                <span class="rank">3</span>
+                                <span class="title">앤커 C to C 케이블 (180cm)</span>
+                                <span class="count">0</span>
+                                <span class="status">공개</span>
+                            </div>
+                            <div class="ranking-item">
+                                <span class="rank">4</span>
+                                <span class="title">앤커 C to C 케이블 (180cm)</span>
+                                <span class="count">0</span>
+                                <span class="status">공개</span>
+                            </div>
+                            <div class="ranking-item">
+                                <span class="rank">5</span>
+                                <span class="title">앤커 C to C 케이블 (180cm)</span>
+                                <span class="count">0</span>
+                                <span class="status">공개</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Layout -->
+    <div class="mobile-layout">
+        <!-- Mobile Header -->
+        <header class="mobile-header">
+            <div class="header-content">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzAiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCA3MCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMiA4VjE2TDEyIDIyTDIyIDE2VjhaIiBmaWxsPSIjRkY1QjFBIi8+Cjwvc3ZnPg==" alt="인포크 로고">
+            </div>
+        </header>
+
+        <!-- Mobile Content -->
+        <main class="mobile-content">
+            <div class="mobile-page-header">
+                <h1>통계</h1>
+            </div>
+
+            <div class="mobile-content-container">
+                <!-- Mobile Tabs -->
+                <div class="mobile-tabs">
+                    <button class="mobile-tab active">요약</button>
+                    <button class="mobile-tab">링크</button>
+                    <button class="mobile-tab">소식받기</button>
+                    <button class="mobile-tab">방문</button>
+                </div>
+
+                <!-- Mobile Statistics -->
+                <div class="mobile-stats-container">
+                    <div class="mobile-stats-card">
+                        <div class="mobile-stats-header">
+                            <h2>2025년 10월 15일</h2>
+                            <div class="mobile-dropdown">
+                                <span>오늘</span>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="mobile-stats-list">
+                            <div class="mobile-stat-item">
+                                <div class="stat-info">
+                                    <h3>페이지 방문자</h3>
+                                    <div class="stat-value">3,213</div>
+                                </div>
+                                <div class="stat-change negative">-100%</div>
+                            </div>
+                            <div class="mobile-stat-item">
+                                <div class="stat-info">
+                                    <h3>링크 클릭수</h3>
+                                    <div class="stat-value">456</div>
+                                </div>
+                                <div class="stat-change neutral">-0%</div>
+                            </div>
+                            <div class="mobile-stat-item">
+                                <div class="stat-info">
+                                    <h3>소식 받기</h3>
+                                    <div class="stat-value">12</div>
+                                </div>
+                                <div class="stat-change neutral">-0%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Ranking -->
+                    <div class="mobile-ranking-card">
+                        <h2>오늘 링크 클릭 수 순위</h2>
+                        <div class="mobile-ranking-list">
+                            <div class="mobile-ranking-item">
+                                <span class="rank">1</span>
+                                <span class="title">앤커 나노 보조배터리 (5000mAh)</span>
+                                <span class="count">0</span>
+                                <span class="status">공개</span>
+                            </div>
+                            <div class="mobile-ranking-item">
+                                <span class="rank">2</span>
+                                <span class="title">앤커 나노 충전기 (30W)</span>
+                                <span class="count">0</span>
+                                <span class="status">공개</span>
+                            </div>
+                            <div class="mobile-ranking-item">
+                                <span class="rank">3</span>
+                                <span class="title">앤커 C to C 케이블 (180cm)</span>
+                                <span class="count">0</span>
+                                <span class="status">공개</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Mobile Bottom Navigation -->
+        <nav class="mobile-bottom-nav">
+            <a href="#" class="mobile-nav-item active">
+                <div class="nav-icon">
+                    <img src="icon/icon-gnb-link.svg" alt="링크" width="24" height="24">
+                </div>
+                <span>링크</span>
+            </a>
+            <a href="#" class="mobile-nav-item">
+                <div class="nav-icon">
+                    <img src="icon/icon-gnb-manager.svg" alt="매니저" width="24" height="24">
+                </div>
+                <span>매니저</span>
+            </a>
+            <a href="#" class="mobile-nav-item">
+                <div class="nav-icon">
+                    <img src="icon/icon-gnb-deal.svg" alt="딜" width="24" height="24">
+                </div>
+                <span>딜</span>
+            </a>
+            <a href="#" class="mobile-nav-item">
+                <div class="nav-icon">
+                    <img src="icon/icon-gnb-chat.svg" alt="채팅" width="24" height="24">
+                </div>
+                <span>채팅</span>
+            </a>
+            <a href="#" class="mobile-nav-item">
+                <div class="nav-icon">
+                    <img src="icon/icon-gnb-all.svg" alt="전체" width="24" height="24">
+                </div>
+                <span>전체</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
