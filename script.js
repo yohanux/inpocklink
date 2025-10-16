@@ -19,6 +19,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // 반응형 레이아웃 설정
         setupResponsiveLayout();
         
+        // 실시간 시각 업데이트
+        updateRealTime();
+        setInterval(updateRealTime, 1000); // 1초마다 업데이트
+        
         // 이벤트 리스너 등록
         setupEventListeners();
         
@@ -107,44 +111,63 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 탭 전환
     function switchTab(tabType) {
-        // 모든 탭에서 active 클래스 제거
-        tabs.forEach(tab => {
+        // 모든 탭에서 active 클래스 제거 (PC + Mobile)
+        const allTabs = document.querySelectorAll('.tab, .mobile-tab');
+        allTabs.forEach(tab => {
             tab.classList.remove('active');
         });
         
-        // 클릭된 탭에 active 클래스 추가
-        tabs.forEach(tab => {
+        // 클릭된 탭에 active 클래스 추가 (PC + Mobile)
+        allTabs.forEach(tab => {
             if (tab.textContent.trim() === tabType) {
                 tab.classList.add('active');
             }
         });
         
-        // 모든 탭 콘텐츠 숨기기
-        const tabContents = document.querySelectorAll('.tab-content');
-        tabContents.forEach(content => content.classList.remove('active'));
+        // PC 탭 콘텐츠 처리
+        const pcTabContents = document.querySelectorAll('.tab-content');
+        pcTabContents.forEach(content => content.classList.remove('active'));
+        
+        // Mobile 탭 콘텐츠 처리
+        const mobileTabContents = document.querySelectorAll('.mobile-tab-content');
+        mobileTabContents.forEach(content => content.classList.remove('active'));
         
         // 클릭된 탭에 해당하는 콘텐츠 표시
         let targetTabId = '';
+        let mobileTargetTabId = '';
         
         switch(tabType) {
             case '요약':
                 targetTabId = 'summary-tab';
+                mobileTargetTabId = 'mobile-summary-tab';
                 break;
             case '링크':
                 targetTabId = 'link-tab';
+                mobileTargetTabId = 'mobile-link-tab';
                 break;
             case '소식받기':
                 targetTabId = 'newsletter-tab';
+                mobileTargetTabId = 'mobile-newsletter-tab';
                 break;
             case '방문':
                 targetTabId = 'visit-tab';
+                mobileTargetTabId = 'mobile-visit-tab';
                 break;
         }
         
+        // PC 탭 콘텐츠 표시
         if (targetTabId) {
             const targetContent = document.getElementById(targetTabId);
             if (targetContent) {
                 targetContent.classList.add('active');
+            }
+        }
+        
+        // Mobile 탭 콘텐츠 표시
+        if (mobileTargetTabId) {
+            const mobileTargetContent = document.getElementById(mobileTargetTabId);
+            if (mobileTargetContent) {
+                mobileTargetContent.classList.add('active');
             }
         }
         
@@ -154,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // 탭별 콘텐츠 로드
         loadTabContent(currentTab);
         
-        console.log(`탭 전환: ${tabType} -> ${targetTabId}`);
+        console.log(`탭 전환: ${tabType} -> PC: ${targetTabId}, Mobile: ${mobileTargetTabId}`);
     }
     
     // 탭 타입을 키로 변환
@@ -474,12 +497,31 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    // 실시간 시각 업데이트 함수
+    function updateRealTime() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        
+        const timeString = `${year}. ${month}. ${day}. ${hours}:${minutes} 기준`;
+        
+        // 모든 chart-date 요소 업데이트
+        const chartDates = document.querySelectorAll('.chart-date');
+        chartDates.forEach(element => {
+            element.textContent = timeString;
+        });
+    }
+
     // 전역 함수로 노출 (필요시 외부에서 호출 가능)
     window.Dashboard = {
         switchTab,
         loadTabContent,
         updateSummaryCards,
         updateRankingData,
-        fetchData
+        fetchData,
+        updateRealTime
     };
 });

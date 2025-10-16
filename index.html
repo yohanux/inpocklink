@@ -412,7 +412,7 @@
                             <div class="traffic-item">
                                 <div class="traffic-source">
                                     <div class="traffic-icon">
-                                        <img src="icon/icon-thumb-link.svg" alt="인포크링크" width="24" height="24">
+                                        <img src="icon/icon-thumb-default.svg" alt="인포크링크" width="24" height="24">
                                     </div>
                                     <span class="traffic-name">인포크링크</span>
                                 </div>
@@ -457,64 +457,317 @@
                     <button class="mobile-tab">방문</button>
                 </div>
 
-                <!-- Mobile Statistics -->
-                <div class="mobile-stats-container">
-                    <div class="mobile-stats-card">
-                        <div class="mobile-stats-header">
-                            <h2>2025년 10월 15일</h2>
-                            <div class="mobile-dropdown">
-                                <span>오늘</span>
+                <!-- Mobile Tab Content -->
+                <div class="mobile-tab-content active" id="mobile-summary-tab">
+                    <!-- Mobile Summary Statistics -->
+                    <div class="mobile-stats-container">
+                        <div class="mobile-stats-card">
+                            <div class="mobile-stats-header">
+                                <h2>2025년 10월 15일</h2>
+                                <div class="mobile-dropdown">
+                                    <span>오늘</span>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="mobile-stats-list">
+                                <div class="mobile-stat-item">
+                                    <div class="stat-info">
+                                        <h3>페이지 방문자</h3>
+                                        <div class="stat-value">3,213</div>
+                                    </div>
+                                    <div class="stat-change negative">-100%</div>
+                                </div>
+                                <div class="mobile-stat-item">
+                                    <div class="stat-info">
+                                        <h3>링크 클릭수</h3>
+                                        <div class="stat-value">456</div>
+                                    </div>
+                                    <div class="stat-change neutral">-0%</div>
+                                </div>
+                                <div class="mobile-stat-item">
+                                    <div class="stat-info">
+                                        <h3>소식 받기</h3>
+                                        <div class="stat-value">12</div>
+                                    </div>
+                                    <div class="stat-change neutral">-0%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mobile Ranking -->
+                        <div class="mobile-ranking-card">
+                            <h2>오늘 링크 클릭 수 순위</h2>
+                            <div class="mobile-ranking-list">
+                                <div class="mobile-ranking-item">
+                                    <span class="rank">1</span>
+                                    <span class="title">앤커 나노 보조배터리 (5000mAh)</span>
+                                    <span class="count">0</span>
+                                    <span class="status">공개</span>
+                                </div>
+                                <div class="mobile-ranking-item">
+                                    <span class="rank">2</span>
+                                    <span class="title">앤커 나노 충전기 (30W)</span>
+                                    <span class="count">0</span>
+                                    <span class="status">공개</span>
+                                </div>
+                                <div class="mobile-ranking-item">
+                                    <span class="rank">3</span>
+                                    <span class="title">앤커 C to C 케이블 (180cm)</span>
+                                    <span class="count">0</span>
+                                    <span class="status">공개</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Link Tab -->
+                <div class="mobile-tab-content" id="mobile-link-tab">
+                    <div class="link-summary">
+                        <div class="summary-text">
+                            <p>10월 15일에는</p>
+                            <p>전날과 <span class="highlight">0% 동일하게 유지</span>했어요</p>
+                        </div>
+                    </div>
+                    
+                    <div class="link-chart">
+                        <div class="chart-header">
+                            <h3>전체 클릭수 변화</h3>
+                            <p class="chart-date">2025. 10. 15. 14:23 기준</p>
+                        </div>
+                        <div class="chart-container">
+                            <img src="resource/graph.svg" alt="전체 클릭수 변화 차트" class="chart-image">
+                        </div>
+                        <div class="chart-controls">
+                            <button class="chart-btn">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                            </button>
+                            <span class="chart-period">2025.10.12 ~ 2025.10.15</span>
+                            <button class="chart-btn">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="link-ranking">
+                        <div class="section-header">
+                            <h2>링크 클릭 수 순위</h2>
+                            <div class="dropdown">
+                                <span>최근 7일</span>
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                                     <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2"/>
                                 </svg>
                             </div>
                         </div>
-                        <div class="mobile-stats-list">
-                            <div class="mobile-stat-item">
-                                <div class="stat-info">
-                                    <h3>페이지 방문자</h3>
-                                    <div class="stat-value">3,213</div>
+                        
+                        <div class="ranking-options">
+                            <label class="checkbox-option">
+                                <input type="checkbox" id="mobile-include-private">
+                                <span class="checkmark">
+                                    <img src="icon/icon-checkbox-disabled.svg" alt="체크박스" class="checkbox-icon">
+                                </span>
+                                비공개 링크 포함
+                            </label>
+                        </div>
+                        
+                        <div class="ranking-list">
+                            <div class="ranking-item">
+                                <div class="rank">1</div>
+                                <div class="link-info">
+                                    <span class="link-title">앤커 나노 보조배터리 (5000mAh)</span>
+                                    <span class="link-count">0</span>
+                                    <span class="status">공개</span>
                                 </div>
-                                <div class="stat-change negative">-100%</div>
                             </div>
-                            <div class="mobile-stat-item">
-                                <div class="stat-info">
-                                    <h3>링크 클릭수</h3>
-                                    <div class="stat-value">456</div>
+                            <div class="ranking-item">
+                                <div class="rank">2</div>
+                                <div class="link-info">
+                                    <span class="link-title">앤커 나노 충전기 (30W)</span>
+                                    <span class="link-count">0</span>
+                                    <span class="status">공개</span>
                                 </div>
-                                <div class="stat-change neutral">-0%</div>
                             </div>
-                            <div class="mobile-stat-item">
-                                <div class="stat-info">
-                                    <h3>소식 받기</h3>
-                                    <div class="stat-value">12</div>
+                            <div class="ranking-item">
+                                <div class="rank">3</div>
+                                <div class="link-info">
+                                    <span class="link-title">앤커 C to C 케이블 (180cm)</span>
+                                    <span class="link-count">0</span>
+                                    <span class="status">공개</span>
                                 </div>
-                                <div class="stat-change neutral">-0%</div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Mobile Ranking -->
-                    <div class="mobile-ranking-card">
-                        <h2>오늘 링크 클릭 수 순위</h2>
-                        <div class="mobile-ranking-list">
-                            <div class="mobile-ranking-item">
-                                <span class="rank">1</span>
-                                <span class="title">앤커 나노 보조배터리 (5000mAh)</span>
-                                <span class="count">0</span>
-                                <span class="status">공개</span>
+                <!-- Mobile Newsletter Tab -->
+                <div class="mobile-tab-content" id="mobile-newsletter-tab">
+                    <div class="newsletter-summary">
+                        <div class="newsletter-card">
+                            <div class="newsletter-text">
+                                <p>나의 링크 소식을</p>
+                                <p><span class="highlight">총 2명</span>이 기다리고 있어요!</p>
                             </div>
-                            <div class="mobile-ranking-item">
-                                <span class="rank">2</span>
-                                <span class="title">앤커 나노 충전기 (30W)</span>
-                                <span class="count">0</span>
-                                <span class="status">공개</span>
+                        </div>
+                        <div class="newsletter-card">
+                            <div class="newsletter-text">
+                                <p>10월 15일에는</p>
+                                <p>전날보다 <span class="highlight increase">10% 증가</span>했어요</p>
                             </div>
-                            <div class="mobile-ranking-item">
-                                <span class="rank">3</span>
-                                <span class="title">앤커 C to C 케이블 (180cm)</span>
-                                <span class="count">0</span>
-                                <span class="status">공개</span>
+                        </div>
+                    </div>
+                    
+                    <div class="newsletter-chart">
+                        <div class="chart-header">
+                            <h3>소식받기 신청 변화</h3>
+                            <p class="chart-date">2025. 10. 15. 14:23 기준</p>
+                        </div>
+                        <div class="chart-container">
+                            <img src="resource/graph.svg" alt="소식받기 신청 변화 차트" class="chart-image">
+                        </div>
+                        <div class="chart-controls">
+                            <button class="chart-btn">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                            </button>
+                            <span class="chart-period">2025.10.12 ~ 2025.10.15</span>
+                            <button class="chart-btn">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Visit Tab -->
+                <div class="mobile-tab-content" id="mobile-visit-tab">
+                    <div class="visit-summary">
+                        <div class="visit-card">
+                            <div class="visit-text">
+                                <p><span class="highlight">총 44명</span>이</p>
+                                <p>내 링크에 방문했습니다!</p>
+                            </div>
+                        </div>
+                        <div class="visit-card">
+                            <div class="visit-text">
+                                <p>10월 15일에는</p>
+                                <p>전날보다 <span class="highlight decrease">66.7% 감소</span>했어요</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="visit-chart">
+                        <div class="chart-header">
+                            <h3>페이지 방문자수 변화</h3>
+                            <p class="chart-date">2025. 10. 15. 14:23 기준</p>
+                        </div>
+                        <div class="chart-container">
+                            <img src="resource/graph.svg" alt="페이지 방문자수 변화 차트" class="chart-image">
+                        </div>
+                        <div class="chart-controls">
+                            <button class="chart-btn">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                            </button>
+                            <span class="chart-period">2025.10.12 ~ 2025.10.15</span>
+                            <button class="chart-btn">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="visit-heatmap">
+                        <div class="section-header">
+                            <div class="header-info">
+                                <h3>요일/시간대별 방문 분포</h3>
+                                <p class="chart-date">2025. 10. 15. 14:23 기준</p>
+                            </div>
+                            <div class="dropdown">
+                                <span>최근 7일</span>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="heatmap-container">
+                            <img src="resource/chart.svg" alt="요일/시간대별 방문 분포 히트맵" class="heatmap-image">
+                        </div>
+                        <div class="chart-controls">
+                            <button class="chart-btn">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                            </button>
+                            <span class="chart-period">2025.10.12 ~ 2025.10.15</span>
+                            <button class="chart-btn">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="visit-traffic">
+                        <div class="section-header">
+                            <div class="header-info">
+                                <h3>유입경로</h3>
+                                <p class="chart-date">2025. 10. 15. 14:23 기준</p>
+                            </div>
+                            <div class="dropdown">
+                                <span>최근 7일</span>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="traffic-table">
+                            <div class="traffic-header">
+                                <span class="traffic-column">유입경로</span>
+                                <span class="traffic-column">방문자수</span>
+                                <span class="traffic-column">비중</span>
+                                <span class="traffic-column"></span>
+                            </div>
+                            <div class="traffic-list">
+                                <div class="traffic-item">
+                                    <div class="traffic-source">
+                                        <div class="traffic-icon">
+                                            <img src="icon/icon-thumb-direct.svg" alt="직접 접속" width="24" height="24">
+                                        </div>
+                                        <span class="traffic-name">직접 접속</span>
+                                    </div>
+                                    <span class="traffic-count">0</span>
+                                    <span class="traffic-percentage">83.3%</span>
+                                    <div class="traffic-arrow">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="traffic-item">
+                                    <div class="traffic-source">
+                                        <div class="traffic-icon">
+                                            <img src="icon/icon-thumb-default.svg" alt="인포크링크" width="24" height="24">
+                                        </div>
+                                        <span class="traffic-name">인포크링크</span>
+                                    </div>
+                                    <span class="traffic-count">0</span>
+                                    <span class="traffic-percentage">16.7%</span>
+                                    <div class="traffic-arrow">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

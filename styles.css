@@ -373,7 +373,7 @@ body {
 }
 
 .chart-period {
-    font: var(--font-paragraph-2-regular);
+    font: var(--font-paragraph-1-regular);
     color: var(--color-gray-800);
 }
 
@@ -450,11 +450,6 @@ body {
     align-items: center;
     gap: var(--spacing-100);
     padding: var(--spacing-200) 0;
-    border-bottom: 1px solid var(--color-gray-200);
-}
-
-.ranking-item:last-child {
-    border-bottom: none;
 }
 
 .rank {
@@ -643,6 +638,14 @@ body {
 
 .traffic-column:first-child {
     text-align: left;
+}
+
+.traffic-column:nth-child(4) {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    flex: none;
+    text-align: center;
 }
 
 .traffic-item {
@@ -1162,11 +1165,31 @@ body {
 @media (max-width: 809px) {
     .mobile-stats-card,
     .mobile-ranking-card {
-        padding: var(--spacing-200) var(--spacing-150);
+        padding: var(--spacing-250) var(--spacing-200);
     }
     
     .mobile-content {
-        padding: var(--spacing-300) var(--spacing-200);
+        padding: var(--spacing-300) var(--spacing-200) 160px var(--spacing-200);
+    }
+    
+    /* 모바일에서 heading-3-bold를 paragraph-1-bold로 변경 */
+    .page-header h1,
+    .summary-text p,
+    .link-summary .summary-text p,
+    .newsletter-text p,
+    .visit-text p,
+    .stats-header h2,
+    .ranking-header h2,
+    .section-header h2,
+    .section-header h3,
+    .chart-header h3 {
+        font: var(--font-paragraph-1-bold) !important;
+    }
+    
+    /* 모바일에서 헤더와 날짜 텍스트 사이 간격 조정 */
+    .chart-header h3,
+    .section-header h3 {
+        margin-bottom: var(--spacing-050) !important;
     }
 }
 
@@ -1216,4 +1239,423 @@ body {
 .dropdown:hover,
 .mobile-dropdown:hover {
     background-color: var(--color-gray-200);
+}
+
+/* Mobile Tab Content Styles */
+@media (max-width: 809px) {
+    .mobile-tab-content {
+        display: none;
+    }
+    
+    .mobile-tab-content.active {
+        display: block;
+    }
+    
+    /* Mobile Newsletter Tab Styles */
+    .newsletter-summary {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-200);
+        margin-bottom: var(--spacing-200);
+    }
+    
+    .newsletter-card {
+        background-color: var(--color-white);
+        border-radius: var(--radius-500);
+        padding: var(--spacing-250) var(--spacing-200);
+    }
+    
+    .newsletter-text p {
+        font: var(--font-paragraph-1-bold);
+        color: var(--color-gray-800);
+        margin: 0;
+        line-height: 1.375;
+    }
+    
+    .newsletter-text p:first-child {
+        margin-bottom: var(--spacing-050);
+    }
+    
+    .newsletter-chart {
+        background-color: var(--color-white);
+        border-radius: var(--radius-500);
+        padding: var(--spacing-250) var(--spacing-200);
+    }
+    
+    .newsletter-chart .chart-header h3 {
+        font: var(--font-paragraph-1-bold);
+        color: var(--color-gray-800);
+        margin: 0 0 var(--spacing-050) 0;
+    }
+    
+    .newsletter-chart .chart-date {
+        font: var(--font-paragraph-2-regular);
+        color: var(--color-gray-500);
+        margin: 0;
+    }
+    
+    .newsletter-chart .chart-container {
+        height: 300px;
+        margin: var(--spacing-200) 0;
+    }
+    
+    .newsletter-chart .chart-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    
+    .newsletter-chart .chart-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-150);
+    }
+    
+    .newsletter-chart .chart-btn {
+        background-color: var(--color-white);
+        border: 1px solid var(--color-gray-200);
+        border-radius: var(--radius-400);
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    
+    .newsletter-chart .chart-period {
+        font: var(--font-paragraph-2-regular);
+        color: var(--color-gray-800);
+    }
+    
+    /* Mobile Visit Tab Styles */
+    .visit-summary {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-200);
+        margin-bottom: var(--spacing-200);
+    }
+    
+    .visit-card {
+        background-color: var(--color-white);
+        border-radius: var(--radius-500);
+        padding: var(--spacing-250) var(--spacing-200);
+    }
+    
+    .visit-text p {
+        font: var(--font-paragraph-1-bold);
+        color: var(--color-gray-800);
+        margin: 0;
+        line-height: 1.3;
+    }
+    
+    .visit-text p:first-child {
+        margin-bottom: var(--spacing-050);
+    }
+    
+    .visit-chart,
+    .visit-heatmap,
+    .visit-traffic {
+        background-color: var(--color-white);
+        border-radius: var(--radius-500);
+        padding: var(--spacing-250) var(--spacing-200);
+        margin-bottom: var(--spacing-200);
+    }
+    
+    .visit-chart .chart-header h3,
+    .visit-heatmap .section-header h3,
+    .visit-traffic .section-header h3 {
+        margin-bottom: var(--spacing-050) !important;
+    }
+    
+    .visit-heatmap .heatmap-container {
+        height: 407px;
+        margin: var(--spacing-200) 0;
+    }
+    
+    .visit-heatmap .heatmap-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    
+    .visit-traffic .traffic-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--spacing-100) 0;
+        border-bottom: 1px solid var(--color-gray-200);
+        margin-bottom: var(--spacing-100);
+    }
+    
+    /* 모바일에서 traffic-column 스타일 오버라이드 */
+    .visit-traffic .traffic-column {
+        font: var(--font-paragraph-2-bold);
+        color: var(--color-gray-500);
+    }
+    
+    .visit-traffic .traffic-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-100);
+    }
+    
+    .visit-traffic .traffic-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--spacing-100) 0;
+    }
+    
+    .visit-traffic .traffic-source {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-100);
+        flex: 1;
+    }
+    
+    .visit-traffic .traffic-icon {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .visit-traffic .traffic-name {
+        font: var(--font-paragraph-2-regular);
+        color: var(--color-gray-800);
+    }
+    
+    .visit-traffic .traffic-count {
+        font: var(--font-paragraph-2-bold);
+        color: var(--color-gray-800);
+        width: 60px;
+        text-align: center;
+    }
+    
+    .visit-traffic .traffic-percentage {
+        font: var(--font-paragraph-2-bold);
+        color: var(--color-orange-800);
+        width: 60px;
+        text-align: center;
+    }
+    
+    .visit-traffic .traffic-arrow {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Mobile Link Tab Specific Styles */
+@media (max-width: 809px) {
+    .link-summary {
+        background-color: var(--color-white);
+        border-radius: var(--radius-500);
+        padding: var(--spacing-250) var(--spacing-200);
+        margin-bottom: var(--spacing-200);
+    }
+    
+    .link-summary .summary-text p {
+        font: var(--font-paragraph-1-bold);
+        color: var(--color-gray-800);
+        margin: 0;
+        line-height: 1.375;
+    }
+    
+    .link-summary .summary-text p:first-child {
+        margin-bottom: var(--spacing-050);
+    }
+    
+    .link-chart {
+        background-color: var(--color-white);
+        border-radius: var(--radius-500);
+        padding: var(--spacing-250) var(--spacing-200);
+        margin-bottom: var(--spacing-200);
+    }
+    
+    .link-chart .chart-header h3 {
+        font: var(--font-paragraph-1-bold);
+        color: var(--color-gray-800);
+        margin: 0 0 var(--spacing-050) 0;
+    }
+    
+    .link-chart .chart-date {
+        font: var(--font-paragraph-2-regular);
+        color: var(--color-gray-500);
+        margin: 0;
+    }
+    
+    .link-chart .chart-container {
+        height: 300px;
+        margin: var(--spacing-200) 0;
+    }
+    
+    .link-chart .chart-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    
+    .link-chart .chart-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-150);
+    }
+    
+    .link-chart .chart-btn {
+        background-color: var(--color-white);
+        border: 1px solid var(--color-gray-200);
+        border-radius: var(--radius-400);
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    
+    .link-chart .chart-period {
+        font: var(--font-paragraph-2-regular);
+        color: var(--color-gray-800);
+    }
+    
+    .link-ranking {
+        background-color: var(--color-white);
+        border-radius: var(--radius-500);
+        padding: var(--spacing-250) var(--spacing-200);
+    }
+    
+    .link-ranking .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--spacing-200);
+    }
+    
+    .link-ranking .section-header h2 {
+        font: var(--font-paragraph-1-bold);
+        color: var(--color-gray-800);
+        margin: 0;
+    }
+    
+    .link-ranking .dropdown {
+        background-color: var(--color-gray-100);
+        border: 1px solid var(--color-gray-200);
+        border-radius: var(--radius-300);
+        padding: var(--spacing-100) var(--spacing-150) var(--spacing-100) var(--spacing-150);
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-050);
+    }
+    
+    .link-ranking .dropdown span {
+        font: var(--font-paragraph-2-regular);
+        color: var(--color-gray-800);
+    }
+    
+    .link-ranking .dropdown svg {
+        width: 24px;
+        height: 24px;
+        color: var(--color-gray-800);
+    }
+    
+    .link-ranking .ranking-options {
+        margin-bottom: var(--spacing-100);
+    }
+    
+    .link-ranking .checkbox-option {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-100);
+        cursor: pointer;
+    }
+    
+    .link-ranking .checkbox-option input[type="checkbox"] {
+        display: none;
+    }
+    
+    .link-ranking .checkmark {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--color-gray-200);
+        border-radius: var(--radius-400);
+        transition: all 0.2s ease;
+    }
+    
+    .link-ranking .checkbox-icon {
+        width: 24px;
+        height: 24px;
+        transition: all 0.2s ease;
+    }
+    
+    .link-ranking .checkbox-option input[type="checkbox"]:checked + .checkmark {
+        background-color: var(--color-orange-800);
+    }
+    
+    .link-ranking .checkbox-option input[type="checkbox"]:checked + .checkmark .checkbox-icon {
+        content: url('icon/icon-checkbox-active.svg');
+    }
+    
+    .link-ranking .checkbox-option span {
+        font: var(--font-paragraph-2-regular);
+        color: var(--color-gray-700);
+    }
+    
+    .link-ranking .ranking-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .link-ranking .ranking-item {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-050);
+        padding: 0;
+        height: 48px;
+    }
+    
+    .link-ranking .rank {
+        width: 20px;
+        font: var(--font-paragraph-2-bold);
+        color: var(--color-orange-800);
+        text-align: center;
+    }
+    
+    .link-ranking .link-info {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-050);
+    }
+    
+    .link-ranking .link-title {
+        flex: 1;
+        font: var(--font-paragraph-2-regular);
+        color: var(--color-gray-800);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    .link-ranking .link-count {
+        width: 120px;
+        font: var(--font-paragraph-2-bold);
+        color: var(--color-gray-800);
+        text-align: center;
+    }
+    
+    .link-ranking .status {
+        font: var(--font-paragraph-2-regular);
+        color: var(--color-blue-500);
+    }
 }
