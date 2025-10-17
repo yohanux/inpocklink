@@ -6,10 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentDate = 'today';
     
     // DOM 요소들
-    const pcLayout = document.querySelector('.pc-layout');
-    const mobileLayout = document.querySelector('.mobile-layout');
-    const tabs = document.querySelectorAll('.tab, .mobile-tab');
-    const dropdowns = document.querySelectorAll('.dropdown, .mobile-dropdown');
+    const layout = document.querySelector('.layout');
+    const tabs = document.querySelectorAll('.tab');
+    const dropdowns = document.querySelectorAll('.dropdown');
     const navItems = document.querySelectorAll('.nav-item, .mobile-nav-item');
     
     // 초기화
@@ -19,6 +18,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // 반응형 레이아웃 설정
         setupResponsiveLayout();
         
+        // 오버레이 토글 설정
+        setupOverlayToggle();
+        
         // 실시간 시각 업데이트
         updateRealTime();
         setInterval(updateRealTime, 1000); // 1초마다 업데이트
@@ -26,50 +28,16 @@ document.addEventListener('DOMContentLoaded', function() {
         // 이벤트 리스너 등록
         setupEventListeners();
         
+        // 링크 페이지 실시간 텍스트 반영 설정
+        setupLinkPageRealtimeUpdate();
+        
         // 초기 데이터 로드
         loadInitialData();
     }
     
-    // 반응형 레이아웃 설정
+    // 반응형 레이아웃 설정 (현재는 CSS로 처리됨)
     function setupResponsiveLayout() {
-        function handleResize() {
-            const width = window.innerWidth;
-            
-            if (width <= 809) {
-                pcLayout.style.display = 'none';
-                mobileLayout.style.display = 'block';
-                
-                // PC 레이아웃 요소들 강제 숨기기
-                const pcElements = document.querySelectorAll('.pc-container, .sidebar, .content-area, .main-content');
-                pcElements.forEach(el => {
-                    el.style.display = 'none';
-                });
-            } else {
-                pcLayout.style.display = 'flex';
-                mobileLayout.style.display = 'none';
-                
-                // PC 레이아웃 요소들 복원
-                const pcContainer = document.querySelector('.pc-container');
-                const sidebar = document.querySelector('.sidebar');
-                const contentArea = document.querySelector('.content-area');
-                const mainContent = document.querySelector('.main-content');
-                
-                if (pcContainer) pcContainer.style.display = 'flex';
-                if (sidebar) sidebar.style.display = 'flex';
-                if (contentArea) contentArea.style.display = 'flex';
-                if (mainContent) mainContent.style.display = 'block';
-            }
-        }
-        
-        // 초기 설정
-        handleResize();
-        
-        // 리사이즈 이벤트 리스너 (디바운스 적용)
-        let resizeTimeout;
-        window.addEventListener('resize', function() {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(handleResize, 100);
-        });
+        console.log('Responsive layout handled by CSS media queries');
     }
     
     // 이벤트 리스너 설정
@@ -111,63 +79,56 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 탭 전환
     function switchTab(tabType) {
-        // 모든 탭에서 active 클래스 제거 (PC + Mobile)
-        const allTabs = document.querySelectorAll('.tab, .mobile-tab');
+        // 모든 탭에서 active 클래스 제거
+        const allTabs = document.querySelectorAll('.tab');
         allTabs.forEach(tab => {
             tab.classList.remove('active');
         });
         
-        // 클릭된 탭에 active 클래스 추가 (PC + Mobile)
+        // 클릭된 탭에 active 클래스 추가
         allTabs.forEach(tab => {
             if (tab.textContent.trim() === tabType) {
                 tab.classList.add('active');
             }
         });
         
-        // PC 탭 콘텐츠 처리
-        const pcTabContents = document.querySelectorAll('.tab-content');
-        pcTabContents.forEach(content => content.classList.remove('active'));
+        // 모든 탭 콘텐츠에서 active 클래스 제거
+        const allTabContents = document.querySelectorAll('.tab-content');
+        allTabContents.forEach(content => content.classList.remove('active'));
         
-        // Mobile 탭 콘텐츠 처리
-        const mobileTabContents = document.querySelectorAll('.mobile-tab-content');
-        mobileTabContents.forEach(content => content.classList.remove('active'));
+        // 모든 모바일 탭 콘텐츠에서 active 클래스 제거
+        const allMobileTabContents = document.querySelectorAll('.mobile-tab-content');
+        allMobileTabContents.forEach(content => content.classList.remove('active'));
         
         // 클릭된 탭에 해당하는 콘텐츠 표시
         let targetTabId = '';
-        let mobileTargetTabId = '';
         
         switch(tabType) {
             case '요약':
                 targetTabId = 'summary-tab';
-                mobileTargetTabId = 'mobile-summary-tab';
                 break;
             case '링크':
                 targetTabId = 'link-tab';
-                mobileTargetTabId = 'mobile-link-tab';
                 break;
             case '소식받기':
                 targetTabId = 'newsletter-tab';
-                mobileTargetTabId = 'mobile-newsletter-tab';
                 break;
             case '방문':
                 targetTabId = 'visit-tab';
-                mobileTargetTabId = 'mobile-visit-tab';
                 break;
         }
         
-        // PC 탭 콘텐츠 표시
+        // 탭 콘텐츠 표시
         if (targetTabId) {
             const targetContent = document.getElementById(targetTabId);
             if (targetContent) {
                 targetContent.classList.add('active');
-            }
-        }
-        
-        // Mobile 탭 콘텐츠 표시
-        if (mobileTargetTabId) {
-            const mobileTargetContent = document.getElementById(mobileTargetTabId);
-            if (mobileTargetContent) {
-                mobileTargetContent.classList.add('active');
+                
+                // 해당 탭 내의 모바일 탭 콘텐츠도 활성화
+                const mobileTabContent = targetContent.querySelector('.mobile-tab-content');
+                if (mobileTabContent) {
+                    mobileTabContent.classList.add('active');
+                }
             }
         }
         
@@ -177,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // 탭별 콘텐츠 로드
         loadTabContent(currentTab);
         
-        console.log(`탭 전환: ${tabType} -> PC: ${targetTabId}, Mobile: ${mobileTargetTabId}`);
+        console.log(`탭 전환: ${tabType} -> ${targetTabId}`);
     }
     
     // 탭 타입을 키로 변환
@@ -216,12 +177,33 @@ document.addEventListener('DOMContentLoaded', function() {
     function toggleDropdown(dropdown) {
         // 드롭다운 메뉴 생성 또는 토글
         const existingMenu = dropdown.querySelector('.dropdown-menu');
+        const icon = dropdown.querySelector('img');
+        
+        if (existingMenu) {
+            closeDropdown(dropdown);
+        } else {
+            createDropdownMenu(dropdown);
+            // 아이콘을 up으로 변경
+            if (icon) {
+                icon.src = 'icon/icon-dropdown-up.svg';
+            }
+            dropdown.setAttribute('data-open', 'true');
+        }
+    }
+    
+    // 드롭다운 닫기
+    function closeDropdown(dropdown) {
+        const existingMenu = dropdown.querySelector('.dropdown-menu');
+        const icon = dropdown.querySelector('img');
         
         if (existingMenu) {
             existingMenu.remove();
-        } else {
-            createDropdownMenu(dropdown);
         }
+        // 아이콘을 down으로 변경
+        if (icon) {
+            icon.src = 'icon/icon-dropdown-down.svg';
+        }
+        dropdown.removeAttribute('data-open');
     }
     
     // 드롭다운 메뉴 생성
@@ -247,27 +229,29 @@ document.addEventListener('DOMContentLoaded', function() {
             const item = document.createElement('div');
             item.className = 'dropdown-item';
             item.textContent = option;
-            item.style.cssText = `
-                padding: var(--spacing-100) var(--spacing-150);
-                cursor: pointer;
-                font: var(--font-paragraph-2-regular);
-                color: var(--color-gray-800);
-                transition: background-color 0.2s ease;
-            `;
+            
+            // 현재 선택된 항목에 selected 클래스 추가
+            if (option === currentDate) {
+                item.classList.add('selected');
+            }
             
             item.addEventListener('click', function() {
                 dropdown.querySelector('span').textContent = option;
-                menu.remove();
+                closeDropdown(dropdown);
                 currentDate = option;
                 loadDateData(option);
             });
             
             item.addEventListener('mouseenter', function() {
-                this.style.backgroundColor = 'var(--color-gray-100)';
+                if (!this.classList.contains('selected')) {
+                    this.style.backgroundColor = 'var(--color-gray-100)';
+                }
             });
             
             item.addEventListener('mouseleave', function() {
-                this.style.backgroundColor = 'transparent';
+                if (!this.classList.contains('selected')) {
+                    this.style.backgroundColor = 'transparent';
+                }
             });
             
             menu.appendChild(item);
@@ -280,7 +264,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             document.addEventListener('click', function closeMenu(e) {
                 if (!dropdown.contains(e.target)) {
-                    menu.remove();
+                    closeDropdown(dropdown);
                     document.removeEventListener('click', closeMenu);
                 }
             });
@@ -515,7 +499,234 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // 링크 페이지 실시간 텍스트 반영 설정
+    function setupLinkPageRealtimeUpdate() {
+        // 타이틀 input 찾기
+        const titleInput = document.querySelector('input[placeholder="타이틀을 입력해주세요"]');
+        // Preview text 찾기
+        const previewText = document.querySelector('.preview-text p');
+        
+        if (titleInput && previewText) {
+            // 초기값 설정
+            previewText.textContent = titleInput.value;
+            
+            // 실시간 업데이트
+            titleInput.addEventListener('input', function() {
+                previewText.textContent = this.value;
+            });
+        }
+    }
+
+    // 전역 함수로 추가 (HTML에서 직접 호출)
+    function updatePreviewText(value) {
+        const previewText = document.querySelector('.preview-text p');
+        if (previewText) {
+            previewText.textContent = value;
+        }
+    }
+
+    // 아코디언 토글 함수 (전역)
+    function toggleAccordion(button) {
+        const section = button.closest('.link-visibility-section');
+        const content = section.querySelector('.section-content');
+        const arrow = button.querySelector('img');
+        
+        // 토글 상태 변경
+        button.classList.toggle('active');
+        
+        if (button.classList.contains('active')) {
+            // 펼치기 - section-content 표시
+            content.style.display = 'block';
+            arrow.src = 'icon/icon-arrowup.svg';
+            arrow.alt = '접기';
+        } else {
+            // 접기 - section-content 숨기기
+            content.style.display = 'none';
+            arrow.src = 'icon/icon-arrowdown.svg';
+            arrow.alt = '펼치기';
+        }
+    }
+
+        
+        // 링크 주소 입력 필드 (현재는 사용하지 않지만 나중을 위해 준비)
+        const linkInput = document.querySelector('.input-fields .input-group:last-child input');
+        const linkUrl = document.querySelector('.url-content span:last-child');
+        
+        if (linkInput && linkUrl) {
+            linkInput.addEventListener('input', function() {
+                const value = this.value.trim() || 'username';
+                linkUrl.textContent = value;
+            });
+        }
+        
+        // 스티커 내용 입력 필드 (스티커 섹션 내부)
+        const stickerInput = document.querySelector('.content-input input');
+        const stickerSectionTexts = document.querySelectorAll('.sticker-section .block-text p, .sticker-section .preview-text-area p');
+        
+        if (stickerInput && stickerSectionTexts.length > 0) {
+            stickerInput.addEventListener('input', function() {
+                const value = this.value.trim() || 'text';
+                stickerSectionTexts.forEach(textElement => {
+                    textElement.textContent = value;
+                });
+            });
+        }
+        
+        // 스타일 선택에 따른 미리보기 업데이트
+        const styleOptions = document.querySelectorAll('.style-option');
+        const previewCard = document.querySelector('.preview-card');
+        
+        styleOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // 모든 옵션에서 active 클래스 제거
+                styleOptions.forEach(opt => opt.classList.remove('active'));
+                // 클릭된 옵션에 active 클래스 추가
+                this.classList.add('active');
+                
+                // 스타일 라벨 업데이트
+                const styleLabels = document.querySelectorAll('.style-label');
+                styleLabels.forEach(label => {
+                    label.classList.remove('active');
+                });
+                const activeLabel = this.querySelector('.style-label');
+                if (activeLabel) {
+                    activeLabel.classList.add('active');
+                }
+                
+                // 미리보기 카드 스타일 업데이트
+                if (previewCard) {
+                    // 기존 스타일 클래스 제거
+                    previewCard.classList.remove('sticker', 'simple', 'card', 'background');
+                    
+                    // 선택된 스타일에 따라 클래스 추가
+                    const labelText = activeLabel ? activeLabel.textContent.trim() : '';
+                    switch(labelText) {
+                        case '썸네일':
+                            // 기본 스타일 유지
+                            break;
+                        case '심플':
+                            previewCard.classList.add('simple');
+                            break;
+                        case '카드':
+                            previewCard.classList.add('card');
+                            break;
+                        case '배경':
+                            previewCard.classList.add('background');
+                            break;
+                    }
+                }
+            });
+        });
+        
+        // 색상 선택에 따른 스타일 업데이트
+        const colorOptions = document.querySelectorAll('.color-option');
+        
+        colorOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // 같은 그룹의 다른 옵션에서 active 클래스 제거
+                const colorGroup = this.closest('.color-picker');
+                const groupOptions = colorGroup.querySelectorAll('.color-option');
+                groupOptions.forEach(opt => opt.classList.remove('active'));
+                
+                // 클릭된 옵션에 active 클래스 추가
+                this.classList.add('active');
+                
+                // 색상 적용
+                const colorCircle = this.querySelector('.color-circle');
+                if (colorCircle) {
+                    const colorClass = Array.from(colorCircle.classList).find(cls => 
+                        ['black', 'pink', 'red', 'orange', 'green', 'blue', 'purple', 'violet'].includes(cls)
+                    );
+                    
+                    if (colorClass) {
+                        const colorMap = {
+                            'black': '#000000',
+                            'pink': '#ec5aa1',
+                            'red': '#ee7477',
+                            'orange': '#f4c05f',
+                            'green': '#84fac1',
+                            'blue': '#6abef6',
+                            'purple': '#a874f9',
+                            'violet': '#ca56eb'
+                        };
+                        
+                        const color = colorMap[colorClass];
+                        const isTextColor = colorGroup.querySelector('.input-label').textContent.includes('텍스트');
+                        
+                        if (isTextColor) {
+                            // 텍스트 색상 적용
+                            stickerTexts.forEach(textElement => {
+                                textElement.style.color = color;
+                            });
+                        } else {
+                            // 배경 색상 적용
+                            const stickerBadges = document.querySelectorAll('.sticker-badge');
+                            stickerBadges.forEach(badge => {
+                                badge.style.backgroundColor = color;
+                            });
+                        }
+                    }
+                }
+            });
+        });
+        
+        console.log('링크 페이지 실시간 업데이트 설정 완료');
+    }
+
+    // 오버레이 토글 기능
+    function setupOverlayToggle() {
+        const toggleBtn = document.getElementById('overlayToggle');
+        const overlays = document.querySelectorAll('.lock-overlay');
+        
+        // 초기 상태: 오버레이 숨김
+        overlays.forEach(overlay => {
+            overlay.style.setProperty('display', 'none', 'important');
+        });
+        
+        toggleBtn.addEventListener('click', function() {
+            const isActive = toggleBtn.classList.contains('active');
+            
+            if (isActive) {
+                // 오버레이 숨기기
+                overlays.forEach(overlay => {
+                    overlay.style.setProperty('display', 'none', 'important');
+                });
+                toggleBtn.classList.remove('active');
+            } else {
+                // 오버레이 보이기
+                overlays.forEach(overlay => {
+                    overlay.style.setProperty('display', 'flex', 'important');
+                });
+                toggleBtn.classList.add('active');
+            }
+        });
+    }
+
     // 전역 함수로 노출 (필요시 외부에서 호출 가능)
+    window.switchTab = switchTab;
+    window.toggleOverlay = function() {
+        const toggleBtn = document.getElementById('overlayToggle');
+        const overlays = document.querySelectorAll('.lock-overlay');
+        
+        if (!toggleBtn || overlays.length === 0) return;
+        
+        const isActive = toggleBtn.classList.contains('active');
+        
+        if (isActive) {
+            // 오버레이 숨기기
+            overlays.forEach(overlay => {
+                overlay.style.setProperty('display', 'none', 'important');
+            });
+            toggleBtn.classList.remove('active');
+        } else {
+            // 오버레이 보이기
+            overlays.forEach(overlay => {
+                overlay.style.setProperty('display', 'flex', 'important');
+            });
+            toggleBtn.classList.add('active');
+        }
+    };
+    
     window.Dashboard = {
         switchTab,
         loadTabContent,

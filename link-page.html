@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>링크 페이지</title>
+    <link rel="stylesheet" href="color-tokens.css">
+    <link rel="stylesheet" href="typography-tokens.css">
+    <link rel="stylesheet" href="radius-tokens.css">
+    <link rel="stylesheet" href="spacing-tokens.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="link-page">
+    <!-- Layout -->
+    <div class="layout">
+        <!-- Header (모바일에서만 표시) -->
+        <header class="mobile-header">
+            <div class="header-content">
+                <img src="resource/logo-inpock.png" alt="인포크 로고">
+            </div>
+        </header>
+
+        <!-- Container -->
+        <div class="container">
+            <!-- Sidebar (PC에서만 표시) -->
+            <aside class="sidebar">
+                <div class="logo">
+                    <img src="resource/logo-inpock.png" alt="인포크 로고">
+                </div>
+                
+                <!-- Sidebar Content -->
+                <div class="sidebar-content">
+                    <!-- Navigation -->
+                    <nav class="navigation">
+                        <a href="link-page.html" class="nav-item active" onclick="window.location.href='link-page.html'; return false;">
+                            <div class="nav-icon">
+                                <img src="icon/icon-gnb-link-active.svg" alt="링크" width="24" height="24">
+                            </div>
+                            <span>링크</span>
+                        </a>
+                        <a href="#" class="nav-item">
+                            <div class="nav-icon">
+                                <img src="icon/icon-gnb-manager.svg" alt="매니저" width="24" height="24">
+                            </div>
+                            <span>매니저</span>
+                        </a>
+                        <a href="#" class="nav-item">
+                            <div class="nav-icon">
+                                <img src="icon/icon-gnb-deal.svg" alt="딜" width="24" height="24">
+                            </div>
+                            <span>딜</span>
+                        </a>
+                        <a href="#" class="nav-item">
+                            <div class="nav-icon">
+                                <img src="icon/icon-gnb-chat.svg" alt="채팅" width="24" height="24">
+                            </div>
+                            <span>채팅</span>
+                            <div class="badge">9</div>
+                        </a>
+                        <a href="#" class="nav-item">
+                            <div class="nav-icon">
+                                <img src="icon/icon-gnb-all.svg" alt="전체" width="24" height="24">
+                            </div>
+                            <span>전체</span>
+                        </a>
+                    </nav>
+
+                    <!-- Cards -->
+                    <div class="cards" onclick="window.location.href='index.html'; return false;" style="cursor: pointer;">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>방문자</h3>
+                                <img src="icon/icon-arrowright.svg" alt="화살표" width="16" height="16">
+                            </div>
+                            <div class="card-content">
+                                <div class="stat-row">
+                                    <span class="stat-label">전체</span>
+                                    <span class="stat-value">123만 4567</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">오늘</span>
+                                    <span class="stat-value">9,876</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">실시간</span>
+                                    <span class="stat-value">1</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>소식받기</h3>
+                                <img src="icon/icon-arrowright.svg" alt="화살표" width="16" height="16">
+                            </div>
+                            <div class="card-content">
+                                <div class="stat-row">
+                                    <span class="stat-label">전체</span>
+                                    <span class="stat-value">26,548</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Content Area -->
+            <div class="content-area">
+
+                    <!-- Main Content -->
+                    <main class="main-content">
+                        <div class="page-header">
+                            <div class="header-back">
+                                <img src="icon/icon-arrowleft.svg" alt="뒤로가기" width="24" height="24">
+                            </div>
+                            <h1>링크 블록</h1>
+                        </div>
+
+                        <div class="content-container">
+                            <!-- 링크 블록 설정 컨테이너 -->
+                            <div class="link-block-container">
+                                <!-- 카드 미리보기 영역 -->
+                                <div class="card-preview-section">
+                                    <div class="preview-background">
+                                        <div class="preview-card">
+                                            <div class="preview-img-area"></div>
+                                            <div class="preview-text-area">
+                                                <p>text</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- 스타일 선택 -->
+                                    <div class="style-selection">
+                                        <div class="style-options">
+                                            <div class="style-option active">
+                                                <div class="style-card selected">
+                                                    <img src="resource/linkblock-img.png" alt="썸네일 스타일" width="59" height="27">
+                                                </div>
+                                                <span class="style-label active">썸네일</span>
+                                            </div>
+                                            <div class="style-option">
+                                                <div class="style-card">
+                                                    <img src="resource/image=simple.png" alt="심플 스타일" width="59" height="27">
+                                                </div>
+                                                <span class="style-label">심플</span>
+                                            </div>
+                                            <div class="style-option">
+                                                <div class="style-card">
+                                                    <img src="resource/image=card.png" alt="카드 스타일" width="59" height="27">
+                                                </div>
+                                                <span class="style-label">카드</span>
+                                            </div>
+                                            <div class="style-option">
+                                                <div class="style-card">
+                                                    <img src="resource/image=background.png" alt="배경 스타일" width="59" height="27">
+                                                </div>
+                                                <span class="style-label">배경</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 입력 필드들 -->
+                                <div class="input-fields">
+                                    <div class="input-group">
+                                        <label class="input-label">타이틀</label>
+                                        <div class="input-field active">
+                                            <input type="text" placeholder="타이틀을 입력해주세요" value="" oninput="updatePreviewText(this.value)">
+                                            <button class="clear-btn" onclick="clearInput(this)">
+                                                <img src="icon/icon-clear.svg" alt="지우기" width="16" height="16">
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <label class="input-label">링크 주소</label>
+                                        <div class="input-field active">
+                                            <input type="text" placeholder="링크를 입력해주세요" value="">
+                                            <button class="clear-btn" onclick="clearInput(this)">
+                                                <img src="icon/icon-clear.svg" alt="지우기" width="16" height="16">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 링크 공개 여부 -->
+                                <div class="link-visibility-section">
+                                    <div class="section-header">
+                                        <span class="section-title">링크 공개 여부</span>
+                                        <button class="section-toggle active" onclick="toggleAccordion(this)">
+                                            <img src="icon/icon-arrowup.svg" alt="접기" width="24" height="24">
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="section-content">
+                                        <div class="radio-options">
+                                            <div class="radio-option active">
+                                                <div class="radio-button selected">
+                                                    <img src="icon/icon-radio-selected.svg" alt="선택됨" width="24" height="24">
+                                                </div>
+                                                <span>바로 공개</span>
+                                            </div>
+                                            <div class="radio-option">
+                                                <div class="radio-button">
+                                                    <img src="icon/icon-radio-default.svg" alt="선택안됨" width="24" height="24">
+                                                </div>
+                                                <span>예약 설정</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="toggle-card">
+                                            <span>링크 공개</span>
+                                            <div class="toggle-switch active" onclick="toggleSwitch(this)">
+                                                <img src="icon/icon-toggle-on.svg" alt="토글 켜짐" class="toggle-icon">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 스티커 설정 -->
+                                <div class="sticker-section">
+                                    <div class="section-header">
+                                        <div class="section-title-group">
+                                            <span class="section-title">스티커로 꾸미기</span>
+                                            <span class="badge-label">PRO</span>
+                                        </div>
+                                        <button class="section-toggle" onclick="toggleAccordion(this)">
+                                            <img src="icon/icon-arrowdown.svg" alt="펼치기" width="24" height="24">
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="section-content" style="display: none;">
+                                        <!-- 스티커 미리보기 -->
+                                        <div class="sticker-preview">
+                                            <div class="preview-card sticker">
+                                                <div class="preview-img-area"></div>
+                                                <div class="preview-content">
+                                                    <div class="sticker-badge">
+                                                        <span>sticker</span>
+                                                    </div>
+                                                    <div class="preview-text-area">
+                                                        <p>text</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- 스티커 추가/삭제 -->
+                                        <div class="sticker-management">
+                                            <h3>스티커 추가/삭제 (꾹 눌러서 순서 이동)</h3>
+                                            <div class="sticker-items">
+                                                <div class="sticker-item">
+                                                    <div class="sticker-preview-item">
+                                                        <div class="sticker-badge">
+                                                            <span>sticker</span>
+                                                        </div>
+                                                        <button class="remove-btn">
+                                                            <img src="icon/icon-clear.svg" alt="삭제" width="16" height="16">
+                                                        </button>
+                                                    </div>
+                                                    <button class="add-sticker-btn">
+                                                        <img src="icon/icon-plus.svg" alt="추가" width="24" height="24">
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- 내용 입력 -->
+                                        <div class="content-input">
+                                            <label class="input-label">내용 입력</label>
+                                            <div class="input-field active">
+                                                <input type="text" placeholder="sticker" value="꾸며봐요">
+                                                <button class="clear-btn">
+                                                    <img src="icon/icon-clear.svg" alt="지우기" width="16" height="16">
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- 스티커 모양 -->
+                                        <div class="sticker-shape">
+                                            <label class="input-label">스티커 모양</label>
+                                            <div class="shape-options">
+                                                <button class="shape-option active">
+                                                    <div class="shape-preview">
+                                                        <img src="resource/image=shape1.png" alt="모양 1" width="60" height="32">
+                                                    </div>
+                                                </button>
+                                                <button class="shape-option">
+                                                    <div class="shape-preview">
+                                                        <img src="resource/image=shape2.png" alt="모양 2" width="60" height="32">
+                                                    </div>
+                                                </button>
+                                                <button class="shape-option">
+                                                    <div class="shape-preview">
+                                                        <img src="resource/image=shape3.png" alt="모양 3" width="60" height="32">
+                                                    </div>
+                                                </button>
+                                                <button class="shape-option">
+                                                    <div class="shape-preview">
+                                                        <img src="resource/image=shape4.png" alt="모양 4" width="60" height="32">
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- 텍스트 색상 -->
+                                        <div class="color-picker">
+                                            <label class="input-label">텍스트 색상</label>
+                                            <div class="color-options">
+                                                <button class="color-option">
+                                                    <div class="color-circle">
+                                                        <img src="icon/icon-color.svg" alt="색상 선택" width="24" height="24">
+                                                    </div>
+                                                </button>
+                                                <button class="color-option">
+                                                    <div class="color-circle black"></div>
+                                                </button>
+                                                <button class="color-option">
+                                                    <div class="color-circle pink"></div>
+                                                </button>
+                                                <button class="color-option">
+                                                    <div class="color-circle red"></div>
+                                                </button>
+                                                <button class="color-option">
+                                                    <div class="color-circle orange"></div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- 배경 색상 -->
+                                        <div class="color-picker">
+                                            <label class="input-label">배경 색상</label>
+                                            <div class="color-options">
+                                                <button class="color-option">
+                                                    <div class="color-circle">
+                                                        <img src="icon/icon-color.svg" alt="색상 선택" width="24" height="24">
+                                                    </div>
+                                                </button>
+                                                <button class="color-option">
+                                                    <div class="color-circle green"></div>
+                                                </button>
+                                                <button class="color-option">
+                                                    <div class="color-circle blue"></div>
+                                                </button>
+                                                <button class="color-option">
+                                                    <div class="color-circle purple"></div>
+                                                </button>
+                                                <button class="color-option">
+                                                    <div class="color-circle violet"></div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 저장 버튼 -->
+                                <button class="save-btn">
+                                    <span>저장하기</span>
+                                </button>
+                            </div>
+
+                            <!-- 미리보기 사이드바 -->
+                            <div class="preview-sidebar">
+                                <!-- 링크 URL -->
+                                <div class="link-url-card">
+                                    <div class="url-content">
+                                        <span>https://link.inpock.co.kr/</span>
+                                        <span>username</span>
+                                    </div>
+                                    <img src="icon/icon-share.svg" alt="공유" width="24" height="24">
+                                </div>
+                                
+                                <!-- 모바일 미리보기 -->
+                                <div class="mobile-preview">
+                                    <div class="preview-phone">
+                                        <div class="phone-content">
+                                            <!-- 프로필 영역 -->
+                                            <div class="profile-section">
+                                                <div class="profile-avatar">
+                                                    <img src="resource/logo-inpock.png" alt="프로필" width="86" height="86">
+                                                </div>
+                                                <div class="profile-info">
+                                                    <h2>username</h2>
+                                                    <p>text</p>
+                                                </div>
+                                                <div class="business-badge">
+                                                    <img src="icon/icon-star.svg" alt="별" width="20" height="20">
+                                                    <span>비즈니스 제안</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- 링크 블록들 -->
+                                            <div class="link-blocks">
+                                                <div class="link-block sticker">
+                                                    <div class="block-img"></div>
+                                                    <div class="block-content">
+                                                        <div class="sticker-badge">
+                                                            <span>sticker</span>
+                                                        </div>
+                                                        <div class="preview-text">
+                                                            <p>text</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="link-block">
+                                                    <div class="block-img"></div>
+                                                    <div class="block-text">
+                                                        <p>text</p>
+                                                    </div>
+                                                </div>
+                                                <div class="link-block">
+                                                    <div class="block-img"></div>
+                                                    <div class="block-text">
+                                                        <p>text</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- 공유/알림 버튼 -->
+                                        <button class="share-btn">
+                                            <img src="icon/icon-share.svg" alt="공유" width="24" height="24">
+                                        </button>
+                                        <button class="notice-btn">
+                                            <img src="icon/icon-notice.svg" alt="알림" width="24" height="24">
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom Navigation (모바일에서만 표시) -->
+    <nav class="mobile-bottom-nav">
+        <a href="link-page.html" class="mobile-nav-item active" onclick="window.location.href='link-page.html'; return false;">
+            <div class="nav-icon">
+                <img src="icon/icon-gnb-link-active.svg" alt="링크" width="24" height="24">
+            </div>
+            <span>링크</span>
+        </a>
+        <a href="#" class="mobile-nav-item">
+            <div class="nav-icon">
+                <img src="icon/icon-gnb-manager.svg" alt="매니저" width="24" height="24">
+            </div>
+            <span>매니저</span>
+        </a>
+        <a href="#" class="mobile-nav-item">
+            <div class="nav-icon">
+                <img src="icon/icon-gnb-deal.svg" alt="딜" width="24" height="24">
+            </div>
+            <span>딜</span>
+        </a>
+        <a href="#" class="mobile-nav-item">
+            <div class="nav-icon">
+                <img src="icon/icon-gnb-chat.svg" alt="채팅" width="24" height="24">
+            </div>
+            <span>채팅</span>
+        </a>
+        <a href="#" class="mobile-nav-item">
+            <div class="nav-icon">
+                <img src="icon/icon-gnb-all.svg" alt="전체" width="24" height="24">
+            </div>
+            <span>전체</span>
+        </a>
+    </nav>
+    
+    <script>
+        // 아코디언 토글 함수 (HTML에 직접 추가)
+        function toggleAccordion(button) {
+            console.log('Accordion clicked!');
+            const section = button.closest('.link-visibility-section, .sticker-section');
+            const content = section.querySelector('.section-content');
+            const arrow = button.querySelector('img');
+            
+            // 토글 상태 변경
+            button.classList.toggle('active');
+            
+            if (button.classList.contains('active')) {
+                // 펼치기 - section-content 표시
+                content.style.display = 'block';
+                arrow.src = 'icon/icon-arrowup.svg';
+                arrow.alt = '접기';
+                console.log('Expanded');
+            } else {
+                // 접기 - section-content 숨기기
+                content.style.display = 'none';
+                arrow.src = 'icon/icon-arrowdown.svg';
+                arrow.alt = '펼치기';
+                console.log('Collapsed');
+            }
+        }
+
+        // 입력 필드 초기화 함수
+        function clearInput(button) {
+            const inputField = button.closest('.input-field');
+            const input = inputField.querySelector('input');
+            
+            // input value 초기화
+            input.value = '';
+            
+            // 타이틀 input인 경우 preview text도 초기화
+            if (input.placeholder === '타이틀을 입력해주세요') {
+                const previewText = document.querySelector('.preview-text p');
+                if (previewText) {
+                    previewText.textContent = '';
+                }
+            }
+            
+            // 스티커 input인 경우 sticker badge도 초기화
+            if (input.placeholder === 'sticker') {
+                updateStickerBadge('');
+            }
+            
+            console.log('Input cleared');
+        }
+
+        // 실시간 텍스트 반영 함수 (HTML에 직접 추가)
+        function updatePreviewText(value) {
+            const previewText = document.querySelector('.preview-text p');
+            if (previewText) {
+                previewText.textContent = value;
+                console.log('Preview text updated:', value);
+            }
+        }
+
+        // 스티커 인풋필드 동기화 함수
+        function updateStickerBadge(value) {
+            const stickerBadge = document.querySelector('.preview-sidebar .sticker-badge span');
+            if (stickerBadge) {
+                stickerBadge.textContent = value || '꾸며봐요';
+                console.log('Sticker badge updated:', value || '꾸며봐요');
+            }
+        }
+
+        // 토글 스위치 함수
+        function toggleSwitch(element) {
+            element.classList.toggle('active');
+            const toggleIcon = element.querySelector('.toggle-icon');
+            
+            if (element.classList.contains('active')) {
+                toggleIcon.src = 'icon/icon-toggle-on.svg';
+                toggleIcon.alt = '토글 켜짐';
+            } else {
+                toggleIcon.src = 'icon/icon-toggle-off.svg';
+                toggleIcon.alt = '토글 꺼짐';
+            }
+            
+            console.log('Toggle switch clicked, active:', element.classList.contains('active'));
+        }
+
+        // 페이지 로드 시 초기값 동기화
+        document.addEventListener('DOMContentLoaded', function() {
+            const titleInput = document.querySelector('input[placeholder="타이틀을 입력해주세요"]');
+            const previewText = document.querySelector('.preview-text p');
+            
+            if (titleInput && previewText) {
+                // 초기값 동기화 (빈 값으로 시작)
+                previewText.textContent = titleInput.value || '';
+                console.log('Initial value synchronized:', titleInput.value || 'empty');
+            }
+            
+            // 스티커 인풋필드 이벤트 리스너 추가
+            const stickerInput = document.querySelector('.sticker-section input[type="text"]');
+            if (stickerInput) {
+                // 초기값 동기화
+                updateStickerBadge(stickerInput.value);
+                
+                // 입력 이벤트 리스너
+                stickerInput.addEventListener('input', function() {
+                    updateStickerBadge(this.value);
+                });
+                
+                console.log('Sticker input listener added');
+            }
+            
+            // 스티커 섹션 초기 상태 설정 (접힘 상태)
+            const stickerSection = document.querySelector('.sticker-section');
+            if (stickerSection) {
+                const toggleButton = stickerSection.querySelector('.section-toggle');
+                const content = stickerSection.querySelector('.section-content');
+                const arrow = toggleButton.querySelector('img');
+                
+                // 초기 상태: 접힘
+                toggleButton.classList.remove('active');
+                content.style.display = 'none';
+                arrow.src = 'icon/icon-arrowdown.svg';
+                arrow.alt = '펼치기';
+                
+                console.log('Sticker section initialized as collapsed');
+            }
+        });
+    </script>
+</body>
+</html>
