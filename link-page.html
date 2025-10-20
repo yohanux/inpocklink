@@ -125,7 +125,7 @@
                                         <div class="preview-card">
                                             <div class="preview-img-area"></div>
                                             <div class="preview-text-area">
-                                                <p></p>
+                                                <p>타이틀을 입력해주세요</p>
                                             </div>
                                         </div>
                                     </div>
@@ -133,25 +133,25 @@
                                     <!-- 스타일 선택 -->
                                     <div class="style-selection">
                                         <div class="style-options">
-                                            <div class="style-option active">
+                                            <div class="style-option active" onclick="selectStyleOption(this, 'thumbnail')">
                                                 <div class="style-card selected">
                                                     <img src="resource/linkblock-img.png" alt="썸네일 스타일" width="59" height="27">
                                                 </div>
                                                 <span class="style-label active">썸네일</span>
                                             </div>
-                                            <div class="style-option">
+                                            <div class="style-option" onclick="selectStyleOption(this, 'simple')">
                                                 <div class="style-card">
                                                     <img src="resource/image=simple.png" alt="심플 스타일" width="59" height="27">
                                                 </div>
                                                 <span class="style-label">심플</span>
                                             </div>
-                                            <div class="style-option">
+                                            <div class="style-option" onclick="selectStyleOption(this, 'card')">
                                                 <div class="style-card">
                                                     <img src="resource/image=card.png" alt="카드 스타일" width="59" height="27">
                                                 </div>
                                                 <span class="style-label">카드</span>
                                             </div>
-                                            <div class="style-option">
+                                            <div class="style-option" onclick="selectStyleOption(this, 'background')">
                                                 <div class="style-card">
                                                     <img src="resource/image=background.png" alt="배경 스타일" width="59" height="27">
                                                 </div>
@@ -236,7 +236,7 @@
                                                 <div class="preview-img-area"></div>
                                                 <div class="preview-content">
                                                     <div class="preview-text-area">
-                                                        <p></p>
+                                                        <p>타이틀을 입력해주세요</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -389,20 +389,20 @@
                                                     <div class="block-img"></div>
                                                     <div class="block-content">
                                                         <div class="preview-text">
-                                                            <p>text</p>
+                                                            <p>타이틀을 입력해주세요</p>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="link-block">
-                                                    <div class="block-img"></div>
+                                                    <div class="block-img" style="background-image: url('resource/thumb-1.png');"></div>
                                                     <div class="block-text">
-                                                        <p>text</p>
+                                                        <p>2차 공구!! 보부상도 사용하는 니나백</p>
                                                     </div>
                                                 </div>
                                                 <div class="link-block">
-                                                    <div class="block-img"></div>
+                                                    <div class="block-img" style="background-image: url('resource/thumb-2.png');"></div>
                                                     <div class="block-text">
-                                                        <p>text</p>
+                                                        <p>나만의 걱정 인형 만들기, 우드볼</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -504,6 +504,59 @@
                 img.src = 'icon/icon-radio-selected.svg';
                 console.log('Reset to immediate publish');
             }
+        }
+
+        // 스타일 옵션 선택 함수
+        function selectStyleOption(element, styleType) {
+            // 모든 style-option에서 active와 selected 클래스 제거
+            const allStyleOptions = document.querySelectorAll('.style-option');
+            allStyleOptions.forEach(option => {
+                option.classList.remove('active');
+                const styleCard = option.querySelector('.style-card');
+                const styleLabel = option.querySelector('.style-label');
+                styleCard.classList.remove('selected');
+                styleLabel.classList.remove('active');
+            });
+            
+            // 클릭된 옵션에 active와 selected 클래스 추가
+            element.classList.add('active');
+            const styleCard = element.querySelector('.style-card');
+            const styleLabel = element.querySelector('.style-label');
+            styleCard.classList.add('selected');
+            styleLabel.classList.add('active');
+            
+            // 스타일별 요소 표시/숨김 처리
+            const linkBlockSticker = document.querySelector('.link-block.sticker .block-img');
+            const imageSection = document.querySelector('.image-section');
+            
+            if (styleType === 'thumbnail') {
+                // 썸네일 선택 시: block-img와 image-section 표시
+                if (linkBlockSticker) {
+                    linkBlockSticker.style.display = 'block';
+                }
+                if (imageSection) {
+                    imageSection.style.display = 'block';
+                }
+            } else if (styleType === 'simple') {
+                // 심플 선택 시: block-img와 image-section 숨김
+                if (linkBlockSticker) {
+                    linkBlockSticker.style.display = 'none';
+                }
+                if (imageSection) {
+                    imageSection.style.display = 'none';
+                }
+            } else {
+                // 다른 스타일 선택 시: 기본적으로 표시
+                if (linkBlockSticker) {
+                    linkBlockSticker.style.display = 'block';
+                }
+                if (imageSection) {
+                    imageSection.style.display = 'block';
+                }
+            }
+            
+            // 선택된 스타일에 따른 추가 로직 (필요시)
+            console.log('Selected style:', styleType);
         }
 
         // 스티커 모양 선택 함수
@@ -613,13 +666,15 @@
             // 모든 preview-text-area의 텍스트 업데이트
             const previewTextAreas = document.querySelectorAll('.preview-text-area p');
             previewTextAreas.forEach(area => {
-                area.textContent = value;
+                // 빈 값이면 기본값 표시, 아니면 입력된 값 표시
+                area.textContent = value.trim() === '' ? '타이틀을 입력해주세요' : value;
             });
             
             // 기존 preview-text도 업데이트 (호환성 유지)
             const previewText = document.querySelector('.preview-text p');
             if (previewText) {
-                previewText.textContent = value;
+                // 빈 값이면 기본값 표시, 아니면 입력된 값 표시
+                previewText.textContent = value.trim() === '' ? '타이틀을 입력해주세요' : value;
             }
             
                 console.log('Preview text updated:', value);
@@ -1050,11 +1105,10 @@
         // 페이지 로드 시 초기값 동기화
         document.addEventListener('DOMContentLoaded', function() {
             const titleInput = document.querySelector('input[placeholder="타이틀을 입력해주세요"]');
-            const previewText = document.querySelector('.preview-text p');
             
-            if (titleInput && previewText) {
-                // 초기값 동기화 (빈 값으로 시작)
-                previewText.textContent = titleInput.value || '';
+            if (titleInput) {
+                // 초기값 동기화 (빈 값으로 시작하지만 기본값 표시)
+                updatePreviewText(titleInput.value);
                 console.log('Initial value synchronized:', titleInput.value || 'empty');
             }
             

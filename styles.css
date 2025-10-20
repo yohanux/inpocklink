@@ -2314,6 +2314,12 @@ body {
     flex-direction: column;
     align-items: center;
     gap: var(--spacing-100);
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.style-option:hover {
+    opacity: 0.8;
 }
 
 .style-card {
@@ -2321,7 +2327,7 @@ body {
     height: 53px;
     background-color: var(--color-white);
     border: 1px solid var(--color-gray-300);
-    border-radius: var(--radius-100);
+    border-radius: var(--radius-300);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2488,7 +2494,6 @@ body {
 
 .section-content {
     transition: all 0.3s ease;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     gap: var(--spacing-300);
@@ -2945,6 +2950,7 @@ body {
     display: flex;
     align-items: center;
     gap: var(--spacing-100);
+    height: 80px;
 }
 
 .link-block.sticker {
@@ -2957,8 +2963,11 @@ body {
     width: 56px;
     height: 56px;
     background-color: var(--color-gray-200);
-        border-radius: var(--radius-100);
+    border-radius: var(--radius-100);
     flex-shrink: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .block-content {
