@@ -2257,7 +2257,7 @@ body {
     margin-bottom: var(--spacing-200);
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: var(--spacing-300);
 }
 
 .preview-background {
@@ -2489,6 +2489,9 @@ body {
 .section-content {
     transition: all 0.3s ease;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-300);
 }
 
 .radio-options {
@@ -2500,6 +2503,12 @@ body {
     display: flex;
     align-items: center;
     gap: var(--spacing-100);
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.radio-option:hover {
+    opacity: 0.8;
 }
 
 .radio-button {
@@ -2560,7 +2569,6 @@ body {
     background-color: var(--color-gray-200);
     border-radius: var(--radius-100);
     padding: var(--spacing-250);
-    margin-bottom: var(--spacing-200);
     display: flex;
     justify-content: center;
 }
@@ -2618,10 +2626,15 @@ body {
 }
 
 /* 스티커 관리 */
+.sticker-management {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-100);
+}
+
 .sticker-management h3 {
     font: var(--font-paragraph-2-regular);
     color: var(--color-gray-800);
-    margin-bottom: var(--spacing-150);
 }
 
 .sticker-items {
@@ -2686,44 +2699,34 @@ body {
 
 /* 컨텐츠 입력 */
 .content-input {
-    margin-bottom: var(--spacing-300);
 }
 
 /* 스티커 모양 */
 .sticker-shape {
-    margin-bottom: var(--spacing-300);
 }
 
 .shape-options {
     display: flex;
-    gap: var(--spacing-300);
+    gap: var(--spacing-250);
 }
 
 .shape-option {
-    background: none;
-    border: none;
-    padding: var(--spacing-050);
-    border-radius: var(--radius-300);
-    cursor: pointer;
-}
-
-.shape-option.active {
-    background-color: var(--color-gray-100);
-}
-
-.shape-preview {
     background-color: var(--color-white);
     border: 1px solid var(--color-gray-300);
     border-radius: var(--radius-300);
     padding: var(--spacing-150) var(--spacing-300);
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+.shape-option.active {
+    border-color: var(--color-orange-800);
+}
+
 /* 색상 선택기 */
 .color-picker {
-    margin-bottom: var(--spacing-300);
 }
 
 .color-options {

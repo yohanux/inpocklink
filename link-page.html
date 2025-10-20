@@ -111,7 +111,7 @@
                     <main class="main-content">
                         <div class="page-header">
                             <div class="header-back">
-                                <img src="icon/icon-arrowleft.svg" alt="뒤로가기" width="24" height="24">
+                                <img src="icon/icon-arrowleft.svg" alt="뒤로가기" width="32" height="32">
                             </div>
                             <h1>링크 블록</h1>
                         </div>
@@ -197,13 +197,13 @@
                                     
                                     <div class="section-content">
                                         <div class="radio-options">
-                                            <div class="radio-option active">
+                                            <div class="radio-option active" onclick="selectRadioOption(this, 'immediate')">
                                                 <div class="radio-button selected">
                                                     <img src="icon/icon-radio-selected.svg" alt="선택됨" width="24" height="24">
                                                 </div>
                                                 <span>바로 공개</span>
                                             </div>
-                                            <div class="radio-option">
+                                            <div class="radio-option" onclick="selectRadioOption(this, 'scheduled')">
                                                 <div class="radio-button">
                                                     <img src="icon/icon-radio-default.svg" alt="선택안됨" width="24" height="24">
                                                 </div>
@@ -246,7 +246,7 @@
                                         <div class="sticker-management">
                                             <h3>스티커 추가/삭제 (꾹 눌러서 순서 이동)</h3>
                                             <div class="sticker-items" id="sticker-items-container">
-                                                <div class="sticker-item" data-sticker-id="1" data-background-color="#ffffff" data-text-color="#000000">
+                                                <div class="sticker-item" data-sticker-id="1" data-background-color="#ffffff" data-text-color="#000000" data-shape="shape1">
                                                     <div class="sticker-preview-item selected" onclick="selectSticker(this)">
                                                         <div class="sticker-badge" style="background-color: #ffffff; color: #000000; border: 1px solid #d1d5db;">
                                                             <span>꾸며봐요</span>
@@ -255,8 +255,8 @@
                                                     </div>
                                                 </div>
                                                 <button class="add-sticker-btn" onclick="addSticker()">
-                                                    <img src="icon/icon-plus.svg" alt="추가" width="24" height="24">
-                                                </button>
+                                                        <img src="icon/icon-plus.svg" alt="추가" width="24" height="24">
+                                                    </button>
                                             </div>
                                         </div>
                                         
@@ -273,25 +273,17 @@
                                         <div class="sticker-shape">
                                             <label class="input-label">스티커 모양</label>
                                             <div class="shape-options">
-                                                <button class="shape-option active">
-                                                    <div class="shape-preview">
+                                                <button class="shape-option active" onclick="selectShapeOption(this, 'shape1')">
                                                         <img src="resource/image=shape1.png" alt="모양 1" width="60" height="32">
-                                                    </div>
                                                 </button>
-                                                <button class="shape-option">
-                                                    <div class="shape-preview">
+                                                <button class="shape-option" onclick="selectShapeOption(this, 'shape2')">
                                                         <img src="resource/image=shape2.png" alt="모양 2" width="60" height="32">
-                                                    </div>
                                                 </button>
-                                                <button class="shape-option">
-                                                    <div class="shape-preview">
+                                                <button class="shape-option" onclick="selectShapeOption(this, 'shape3')">
                                                         <img src="resource/image=shape3.png" alt="모양 3" width="60" height="32">
-                                                    </div>
                                                 </button>
-                                                <button class="shape-option">
-                                                    <div class="shape-preview">
+                                                <button class="shape-option" onclick="selectShapeOption(this, 'shape4')">
                                                         <img src="resource/image=shape4.png" alt="모양 4" width="60" height="32">
-                                                    </div>
                                                 </button>
                                             </div>
                                         </div>
@@ -379,7 +371,7 @@
                                             <!-- 프로필 영역 -->
                                             <div class="profile-section">
                                                 <div class="profile-avatar">
-                                                    <img src="resource/logo-inpock.png" alt="프로필" width="86" height="86">
+                                                    <img src="resource/profile.png" alt="프로필" width="86" height="86">
                                                 </div>
                                                 <div class="profile-info">
                                                     <h2>username</h2>
@@ -467,6 +459,91 @@
     </nav>
     
     <script>
+        // 라디오 옵션 선택 함수
+        function selectRadioOption(element, value) {
+            // 모든 라디오 옵션에서 active와 selected 클래스 제거
+            const allOptions = document.querySelectorAll('.radio-option');
+            allOptions.forEach(option => {
+                option.classList.remove('active');
+                const radioButton = option.querySelector('.radio-button');
+                radioButton.classList.remove('selected');
+                const img = radioButton.querySelector('img');
+                img.src = 'icon/icon-radio-default.svg';
+            });
+            
+            // 클릭된 옵션에 active와 selected 클래스 추가
+            element.classList.add('active');
+            const radioButton = element.querySelector('.radio-button');
+            radioButton.classList.add('selected');
+            const img = radioButton.querySelector('img');
+            img.src = 'icon/icon-radio-selected.svg';
+            
+            // 선택된 값에 따른 추가 로직 (필요시)
+            console.log('Selected option:', value);
+        }
+
+        // 바로 공개로 기본값 리셋 함수
+        function resetToImmediatePublish() {
+            // 모든 라디오 옵션에서 active와 selected 클래스 제거
+            const allOptions = document.querySelectorAll('.radio-option');
+            allOptions.forEach(option => {
+                option.classList.remove('active');
+                const radioButton = option.querySelector('.radio-button');
+                radioButton.classList.remove('selected');
+                const img = radioButton.querySelector('img');
+                img.src = 'icon/icon-radio-default.svg';
+            });
+            
+            // 바로 공개 옵션을 찾아서 선택
+            const immediateOption = document.querySelector('.radio-option[onclick*="immediate"]');
+            if (immediateOption) {
+                immediateOption.classList.add('active');
+                const radioButton = immediateOption.querySelector('.radio-button');
+                radioButton.classList.add('selected');
+                const img = radioButton.querySelector('img');
+                img.src = 'icon/icon-radio-selected.svg';
+                console.log('Reset to immediate publish');
+            }
+        }
+
+        // 스티커 모양 선택 함수
+        function selectShapeOption(element, shapeType) {
+            // 모든 shape-option에서 active 클래스 제거
+            const allShapeOptions = document.querySelectorAll('.shape-option');
+            allShapeOptions.forEach(option => {
+                option.classList.remove('active');
+            });
+            
+            // 클릭된 옵션에 active 클래스 추가
+            element.classList.add('active');
+            
+            // 현재 선택된 스티커의 모양만 변경
+            const selectedSticker = document.querySelector('.sticker-preview-item.selected');
+            if (selectedSticker) {
+                const stickerItem = selectedSticker.closest('.sticker-item');
+                const badge = selectedSticker.querySelector('.sticker-badge');
+                
+                // 선택된 스티커의 data-shape 속성 업데이트
+                stickerItem.setAttribute('data-shape', shapeType);
+                
+                // 선택된 스티커의 border-radius만 변경
+                if (shapeType === 'shape1') {
+                    badge.style.borderRadius = 'var(--radius-500)';
+                } else if (shapeType === 'shape2') {
+                    badge.style.borderRadius = 'var(--radius-100)';
+                } else if (shapeType === 'shape3') {
+                    badge.style.borderRadius = 'var(--radius-100)';
+                } else if (shapeType === 'shape4') {
+                    badge.style.borderRadius = 'var(--radius-100)';
+                }
+            }
+            
+            // 미리보기 스티커들도 업데이트
+            updatePreviewStickers();
+            
+            console.log('Selected shape:', shapeType);
+        }
+
         // 아코디언 토글 함수 (HTML에 직접 추가)
         function toggleAccordion(button) {
             console.log('Accordion clicked!');
@@ -479,7 +556,7 @@
             
             if (button.classList.contains('active')) {
                 // 펼치기 - section-content 표시
-                content.style.display = 'block';
+                content.style.display = 'flex';
                 arrow.src = 'resource/button-toggle-on.svg';
                 arrow.alt = '접기';
                 console.log('Expanded');
@@ -498,6 +575,11 @@
                 // 스티커 섹션이면 미리보기 스티커 숨기기
                 if (section.classList.contains('sticker-section')) {
                     hidePreviewStickers();
+                }
+                
+                // 링크 공개여부 섹션이면 바로 공개로 기본값 설정
+                if (section.classList.contains('link-visibility-section')) {
+                    resetToImmediatePublish();
                 }
             }
         }
@@ -540,7 +622,7 @@
                 previewText.textContent = value;
             }
             
-            console.log('Preview text updated:', value);
+                console.log('Preview text updated:', value);
         }
 
         // 스티커 인풋필드 동기화 함수
@@ -594,12 +676,26 @@
                 const color = badge.querySelector('span').style.color || '#000000';
                 const border = badge.style.border || '1px solid var(--color-gray-300)';
                 
+                // 각 스티커의 개별 모양에 따른 border-radius 설정
+                const shapeType = item.getAttribute('data-shape') || 'shape1';
+                let borderRadius = 'var(--radius-900)'; // 기본값
+                if (shapeType === 'shape1') {
+                    borderRadius = 'var(--radius-500)';
+                } else if (shapeType === 'shape2') {
+                    borderRadius = 'var(--radius-100)';
+                } else if (shapeType === 'shape3') {
+                    borderRadius = 'var(--radius-100)';
+                } else if (shapeType === 'shape4') {
+                    borderRadius = 'var(--radius-100)';
+                }
+                
                 // preview-content용 스티커 배지 추가
                 const previewSticker = document.createElement('div');
                 previewSticker.className = 'sticker-badge';
                 previewSticker.style.backgroundColor = backgroundColor;
                 previewSticker.style.color = color;
                 previewSticker.style.border = border;
+                previewSticker.style.borderRadius = borderRadius;
                 previewSticker.innerHTML = `<span>${text}</span>`;
                 previewContainer.appendChild(previewSticker);
                 
@@ -609,6 +705,7 @@
                 blockSticker.style.backgroundColor = backgroundColor;
                 blockSticker.style.color = color;
                 blockSticker.style.border = border;
+                blockSticker.style.borderRadius = borderRadius;
                 blockSticker.innerHTML = `<span>${text}</span>`;
                 blockContainer.appendChild(blockSticker);
             });
@@ -656,7 +753,28 @@
             // 선택된 스티커의 색상에 맞게 컬러 옵션 동기화
             syncColorOptions(element);
             
+            // 선택된 스티커의 모양에 맞게 shape 옵션 동기화
+            syncShapeOptions(element);
+            
             console.log('Sticker selected:', badgeText);
+        }
+
+        // 모양 옵션 동기화 함수
+        function syncShapeOptions(stickerElement) {
+            const stickerItem = stickerElement.closest('.sticker-item');
+            const shapeType = stickerItem.getAttribute('data-shape') || 'shape1';
+            
+            // 모든 shape-option에서 active 클래스 제거
+            const allShapeOptions = document.querySelectorAll('.shape-option');
+            allShapeOptions.forEach(option => {
+                option.classList.remove('active');
+            });
+            
+            // 해당 모양의 shape-option에 active 클래스 추가
+            const targetShapeOption = document.querySelector(`.shape-option[onclick*="${shapeType}"]`);
+            if (targetShapeOption) {
+                targetShapeOption.classList.add('active');
+            }
         }
 
         // 컬러 옵션 동기화 함수
@@ -778,9 +896,10 @@
                 </div>
             `;
             
-            // 새 스티커에 기본 색상 데이터 속성 설정
+            // 새 스티커에 기본 색상 및 모양 데이터 속성 설정
             newStickerItem.setAttribute('data-background-color', '#ffffff');
             newStickerItem.setAttribute('data-text-color', '#000000');
+            newStickerItem.setAttribute('data-shape', 'shape1');
             
             // 추가 버튼 앞에 새로운 스티커 삽입
             const addButton = container.querySelector('.add-sticker-btn');
