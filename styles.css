@@ -2853,7 +2853,6 @@ body {
 .url-content {
     display: flex;
     align-items: center;
-    gap: var(--spacing-050);
         font: var(--font-paragraph-2-regular);
         color: var(--color-gray-800);
 }
