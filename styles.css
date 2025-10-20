@@ -2966,10 +2966,16 @@ body {
     height: 80px;
 }
 
+.sticker-preview-wrapper {
+    max-width: 319px;
+    width: 100%;
+}
+
 .link-block.sticker {
     flex-direction: row;
     gap: var(--spacing-100);
     align-items: center;
+    width: 100%;
 }
 
 .block-img {

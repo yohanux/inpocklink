@@ -122,10 +122,15 @@
                                 <!-- 카드 미리보기 영역 -->
                                 <div class="card-preview-section">
                                     <div class="preview-background">
-                                        <div class="preview-card">
-                                            <div class="preview-img-area"></div>
-                                            <div class="preview-text-area">
-                                                <p>타이틀을 입력해주세요</p>
+                                        <!-- 링크 블록 스티커 미리보기 -->
+                                        <div class="sticker-preview-wrapper">
+                                            <div class="link-block sticker">
+                                                <div class="block-img"></div>
+                                                <div class="block-content">
+                                                    <div class="preview-text">
+                                                        <p>타이틀을 입력해주세요</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -230,21 +235,8 @@
                                     </div>
                                     
                                     <div class="section-content" style="display: none;">
-                                        <!-- 스티커 미리보기 -->
-                                        <div class="sticker-preview">
-                                            <div class="preview-card sticker">
-                                                <div class="preview-img-area"></div>
-                                                <div class="preview-content">
-                                                    <div class="preview-text-area">
-                                                        <p>타이틀을 입력해주세요</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
                                         <!-- 스티커 추가/삭제 -->
                                         <div class="sticker-management">
-                                            <h3>스티커 추가/삭제 (꾹 눌러서 순서 이동)</h3>
                                             <div class="sticker-items" id="sticker-items-container">
                                                 <div class="sticker-item" data-sticker-id="1" data-background-color="#ffffff" data-text-color="#000000" data-shape="shape1">
                                                     <div class="sticker-preview-item selected" onclick="selectSticker(this)">
@@ -739,96 +731,60 @@
             console.log('Selected sticker badge updated:', value || '꾸며봐요');
         }
 
-        // 미리보기 영역의 스티커들 업데이트
-        function updatePreviewStickers() {
+        // 스티커 컨테이너 생성 헬퍼 (현재 스티커 상태를 기반으로 컨테이너 하나를 만들어 반환)
+        function buildStickerBadgesContainer() {
+            const container = document.createElement('div');
+            container.className = 'sticker-badges-container';
             const stickerItems = document.querySelectorAll('.sticker-item');
-            const previewContent = document.querySelector('.preview-content');
-            const blockContent = document.querySelector('.block-content');
-            
-            // 기존 미리보기 스티커 컨테이너 제거
-            const existingPreviewContainer = previewContent.querySelector('.sticker-badges-container');
-            if (existingPreviewContainer) {
-                existingPreviewContainer.remove();
-            }
-            
-            const existingBlockContainer = blockContent.querySelector('.sticker-badges-container');
-            if (existingBlockContainer) {
-                existingBlockContainer.remove();
-            }
-            
-            // preview-content용 스티커 컨테이너 생성
-            const previewContainer = document.createElement('div');
-            previewContainer.className = 'sticker-badges-container';
-            
-            // block-content용 스티커 컨테이너 생성
-            const blockContainer = document.createElement('div');
-            blockContainer.className = 'sticker-badges-container';
-            
-            // 현재 스티커들을 컨테이너에 추가
-            stickerItems.forEach((item, index) => {
+            stickerItems.forEach(item => {
                 const badge = item.querySelector('.sticker-badge');
-                const badgeSpan = badge.querySelector('span');
-                const text = badgeSpan ? badgeSpan.textContent : '꾸며봐요';
-                
-                // 원본 스티커의 스타일 정보 가져오기
+                if (!badge) return;
+                const span = badge.querySelector('span');
+                const text = span ? span.textContent : '꾸며봐요';
                 const backgroundColor = badge.style.backgroundColor || '#ffffff';
-                const color = badge.querySelector('span').style.color || '#000000';
+                const color = span && span.style.color ? span.style.color : '#000000';
                 const border = badge.style.border || '1px solid var(--color-gray-300)';
-                
-                // 각 스티커의 개별 모양에 따른 border-radius 설정
                 const shapeType = item.getAttribute('data-shape') || 'shape1';
-                let borderRadius = 'var(--radius-900)'; // 기본값
-                if (shapeType === 'shape1') {
-                    borderRadius = 'var(--radius-500)';
-                } else if (shapeType === 'shape2') {
-                    borderRadius = 'var(--radius-100)';
-                } else if (shapeType === 'shape3') {
-                    borderRadius = 'var(--radius-100)';
-                } else if (shapeType === 'shape4') {
+                let borderRadius = 'var(--radius-500)';
+                if (shapeType === 'shape2' || shapeType === 'shape3' || shapeType === 'shape4') {
                     borderRadius = 'var(--radius-100)';
                 }
-                
-                // preview-content용 스티커 배지 추가
-                const previewSticker = document.createElement('div');
-                previewSticker.className = 'sticker-badge';
-                previewSticker.style.backgroundColor = backgroundColor;
-                previewSticker.style.color = color;
-                previewSticker.style.border = border;
-                previewSticker.style.borderRadius = borderRadius;
-                previewSticker.innerHTML = `<span>${text}</span>`;
-                previewContainer.appendChild(previewSticker);
-                
-                // block-content용 스티커 배지 추가
-                const blockSticker = document.createElement('div');
-                blockSticker.className = 'sticker-badge';
-                blockSticker.style.backgroundColor = backgroundColor;
-                blockSticker.style.color = color;
-                blockSticker.style.border = border;
-                blockSticker.style.borderRadius = borderRadius;
-                blockSticker.innerHTML = `<span>${text}</span>`;
-                blockContainer.appendChild(blockSticker);
+                const sticker = document.createElement('div');
+                sticker.className = 'sticker-badge';
+                sticker.style.backgroundColor = backgroundColor;
+                sticker.style.color = color;
+                sticker.style.border = border;
+                sticker.style.borderRadius = borderRadius;
+                sticker.innerHTML = `<span>${text}</span>`;
+                container.appendChild(sticker);
             });
-            
-            // 컨테이너를 각각의 content에 추가
-            previewContent.appendChild(previewContainer);
-            blockContent.appendChild(blockContainer);
+            return container;
+        }
+
+        // 미리보기 영역의 스티커들 업데이트
+        function updatePreviewStickers() {
+            const linkBlockContents = document.querySelectorAll('.link-block.sticker .block-content');
+
+            // 기존 컨테이너 제거
+            linkBlockContents.forEach(bc => {
+                const prev = bc.querySelector('.sticker-badges-container');
+                if (prev) prev.remove();
+            });
+
+            // 새 컨테이너 부착
+            linkBlockContents.forEach(bc => {
+                bc.appendChild(buildStickerBadgesContainer());
+            });
         }
 
         // 미리보기 스티커 숨기기 함수
         function hidePreviewStickers() {
-            const previewContent = document.querySelector('.preview-content');
-            const blockContent = document.querySelector('.block-content');
-            
-            // 기존 미리보기 스티커 컨테이너 제거
-            const existingPreviewContainer = previewContent.querySelector('.sticker-badges-container');
-            if (existingPreviewContainer) {
-                existingPreviewContainer.remove();
-            }
-            
-            const existingBlockContainer = blockContent.querySelector('.sticker-badges-container');
-            if (existingBlockContainer) {
-                existingBlockContainer.remove();
-            }
+            const linkBlockContents = document.querySelectorAll('.link-block.sticker .block-content');
+
+            linkBlockContents.forEach(bc => {
+                const c = bc.querySelector('.sticker-badges-container');
+                if (c) c.remove();
+            });
         }
 
         // 스티커 선택 함수
