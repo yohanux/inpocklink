@@ -2206,14 +2206,20 @@ body {
 
 /* 페이지 헤더 */
 .page-header {
-        display: flex;
+    display: flex;
     align-items: center;
     gap: var(--spacing-050);
     margin-bottom: var(--spacing-400);
+    min-height: 40px;
 }
 
 .header-back {
     cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .page-header h1 {
