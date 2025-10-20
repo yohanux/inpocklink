@@ -2369,18 +2369,17 @@ body {
 .input-field {
     position: relative;
     height: 44px;
-    background-color: var(--color-gray-100);
+    background-color: transparent;
     border: 1px solid var(--color-gray-300);
-    border-radius: var(--radius-100);
+    border-radius: var(--radius-300);
     display: flex;
     align-items: center;
     padding: 0 var(--spacing-600) 0 var(--spacing-150);
+    transition: border-color 0.2s ease;
 }
 
-.input-field.active {
-    background-color: #fef3e8;
-    border-color: #ffd0bd;
-    border-radius: var(--radius-300);
+.input-field:focus-within {
+    border-color: var(--color-gray-800);
 }
 
 .input-field input {
@@ -2388,12 +2387,21 @@ body {
     border: none;
     background: none;
     font: var(--font-paragraph-2-regular);
-    color: var(--color-gray-800);
+    color: var(--color-gray-300);
     outline: none;
+    transition: color 0.2s ease;
+}
+
+.input-field input:focus {
+    color: var(--color-gray-800);
+}
+
+.input-field.inputed input {
+    color: var(--color-gray-800);
 }
 
 .input-field input::placeholder {
-    color: var(--color-gray-400);
+    color: var(--color-gray-300);
 }
 
 .clear-btn {
@@ -2821,8 +2829,14 @@ body {
       transition: background-color 0.2s ease;
   }
 
-.save-btn:hover {
+.save-btn:hover:not(:disabled) {
     background-color: var(--color-orange-600);
+}
+
+.save-btn:disabled {
+    background-color: var(--color-orange-400);
+    color: var(--color-orange-100);
+    cursor: not-allowed;
 }
 
 /* 미리보기 사이드바 */

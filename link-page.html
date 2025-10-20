@@ -163,7 +163,7 @@
                                 <!-- 입력 필드들 -->
                                     <div class="input-group">
                                         <label class="input-label">타이틀</label>
-                                        <div class="input-field active">
+                                        <div class="input-field">
                                             <input type="text" placeholder="타이틀을 입력해주세요" value="" oninput="updatePreviewText(this.value)">
                                                 <img class="clear-btn" src="icon/icon-clear.svg" alt="지우기" width="24" height="24" onclick="clearInput(this)">
                                         </div>
@@ -171,8 +171,8 @@
                                     
                                     <div class="input-group">
                                         <label class="input-label">링크 주소</label>
-                                        <div class="input-field active">
-                                            <input type="text" placeholder="링크를 입력해주세요" value="">
+                                        <div class="input-field">
+                                            <input type="text" placeholder="링크를 입력해주세요" value="" oninput="updateInputFieldState(this); updateSaveButtonState()">
                                             <img class="clear-btn" src="icon/icon-clear.svg" alt="지우기" width="24" height="24" onclick="clearInput(this)">
                                         </div>
                                     </div>
@@ -263,7 +263,7 @@
                                         <!-- 내용 입력 -->
                                         <div class="content-input">
                                             <label class="input-label">내용 입력</label>
-                                            <div class="input-field active">
+                                            <div class="input-field">
                                                 <input type="text" placeholder="sticker" value="꾸며봐요">
                                                 <img class="clear-btn" src="icon/icon-clear.svg" alt="지우기" width="24" height="24" onclick="clearInput(this)">
                                             </div>
@@ -348,7 +348,7 @@
                                 </div>
 
                                 <!-- 저장 버튼 -->
-                                <button class="save-btn">
+                                <button class="save-btn" id="save-btn" disabled>
                                     <span>저장하기</span>
                                 </button>
                             </div>
@@ -658,6 +658,12 @@
                 updateStickerBadge('');
             }
             
+            // 인풋 필드 상태 업데이트
+            updateInputFieldState(input);
+            
+            // 저장 버튼 상태 업데이트
+            updateSaveButtonState();
+            
             console.log('Input cleared');
         }
 
@@ -677,7 +683,45 @@
                 previewText.textContent = value.trim() === '' ? '타이틀을 입력해주세요' : value;
             }
             
+            // 인풋 필드 상태 업데이트
+            updateInputFieldState(event.target);
+            
+            // 저장 버튼 상태 업데이트
+            updateSaveButtonState();
+            
                 console.log('Preview text updated:', value);
+        }
+
+        // 인풋 필드 상태 업데이트 함수
+        function updateInputFieldState(inputElement) {
+            const inputField = inputElement.closest('.input-field');
+            if (inputField) {
+                const value = inputElement.value.trim();
+                if (value !== '') {
+                    inputField.classList.add('inputed');
+                } else {
+                    inputField.classList.remove('inputed');
+                }
+            }
+        }
+
+        // 저장 버튼 상태 업데이트 함수
+        function updateSaveButtonState() {
+            const titleInput = document.querySelector('input[placeholder="타이틀을 입력해주세요"]');
+            const linkInput = document.querySelector('input[placeholder="링크를 입력해주세요"]');
+            const saveBtn = document.getElementById('save-btn');
+            
+            if (titleInput && linkInput && saveBtn) {
+                const titleValue = titleInput.value.trim();
+                const linkValue = linkInput.value.trim();
+                
+                // 둘 다 값이 있어야 활성화, 하나라도 비어있으면 비활성화
+                if (titleValue !== '' && linkValue !== '') {
+                    saveBtn.disabled = false;
+                } else {
+                    saveBtn.disabled = true;
+                }
+            }
         }
 
         // 스티커 인풋필드 동기화 함수
@@ -1111,6 +1155,15 @@
                 updatePreviewText(titleInput.value);
                 console.log('Initial value synchronized:', titleInput.value || 'empty');
             }
+            
+            // 초기 인풋 필드 상태 설정
+            const allInputs = document.querySelectorAll('.input-field input');
+            allInputs.forEach(input => {
+                updateInputFieldState(input);
+            });
+            
+            // 초기 저장 버튼 상태 설정
+            updateSaveButtonState();
             
             // 스티커 인풋필드 이벤트 리스너 추가
             const stickerInput = document.querySelector('.sticker-section input[type="text"]');
