@@ -256,7 +256,7 @@
                                         <div class="content-input">
                                             <label class="input-label">내용 입력</label>
                                             <div class="input-field">
-                                                <input type="text" placeholder="sticker" value="꾸며봐요">
+                                                <input type="text" placeholder="sticker" value="꾸며봐요" oninput="updateStickerBadge(this.value); updateInputFieldState(this);">
                                                 <img class="clear-btn" src="icon/icon-clear.svg" alt="지우기" width="24" height="24" onclick="clearInput(this)">
                                             </div>
                                         </div>
@@ -1127,9 +1127,13 @@
                 // 초기값 동기화
                 updateStickerBadge(stickerInput.value);
                 
+                // 초기 인풋 필드 상태 설정
+                updateInputFieldState(stickerInput);
+                
                 // 입력 이벤트 리스너
                 stickerInput.addEventListener('input', function() {
                     updateStickerBadge(this.value);
+                    updateInputFieldState(this);
                 });
                 
                 console.log('Sticker input listener added');
