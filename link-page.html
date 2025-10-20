@@ -125,7 +125,7 @@
                                         <div class="preview-card">
                                             <div class="preview-img-area"></div>
                                             <div class="preview-text-area">
-                                                <p>text</p>
+                                                <p></p>
                                             </div>
                                         </div>
                                     </div>
@@ -156,20 +156,16 @@
                                                     <img src="resource/image=background.png" alt="배경 스타일" width="59" height="27">
                                                 </div>
                                                 <span class="style-label">배경</span>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- 입력 필드들 -->
-                                <div class="input-fields">
                                     <div class="input-group">
                                         <label class="input-label">타이틀</label>
                                         <div class="input-field active">
                                             <input type="text" placeholder="타이틀을 입력해주세요" value="" oninput="updatePreviewText(this.value)">
-                                            <button class="clear-btn" onclick="clearInput(this)">
-                                                <img src="icon/icon-clear.svg" alt="지우기" width="16" height="16">
-                                            </button>
+                                                <img class="clear-btn" src="icon/icon-clear.svg" alt="지우기" width="24" height="24" onclick="clearInput(this)">
                                         </div>
                                     </div>
                                     
@@ -177,9 +173,15 @@
                                         <label class="input-label">링크 주소</label>
                                         <div class="input-field active">
                                             <input type="text" placeholder="링크를 입력해주세요" value="">
-                                            <button class="clear-btn" onclick="clearInput(this)">
-                                                <img src="icon/icon-clear.svg" alt="지우기" width="16" height="16">
-                                            </button>
+                                            <img class="clear-btn" src="icon/icon-clear.svg" alt="지우기" width="24" height="24" onclick="clearInput(this)">
+                                        </div>
+                                    </div>
+
+                                    <!-- 이미지 섹션 -->
+                                    <div class="image-section">
+                                        <label class="input-label">이미지</label>
+                                        <div class="image-upload-area">
+                                            <img src="icon/icon-plus.svg" alt="이미지 추가" width="24" height="24">
                                         </div>
                                     </div>
                                 </div>
@@ -189,7 +191,7 @@
                                     <div class="section-header">
                                         <span class="section-title">링크 공개 여부</span>
                                         <button class="section-toggle active" onclick="toggleAccordion(this)">
-                                            <img src="icon/icon-arrowup.svg" alt="접기" width="24" height="24">
+                                            <img src="resource/button-toggle-on.svg" alt="접기">
                                         </button>
                                     </div>
                                     
@@ -205,16 +207,13 @@
                                                 <div class="radio-button">
                                                     <img src="icon/icon-radio-default.svg" alt="선택안됨" width="24" height="24">
                                                 </div>
+                                                <div class="section-title-group">
                                                 <span>예약 설정</span>
+                                                    <span class="badge-label">PRO</span>
+                                                </div>
                                             </div>
                                         </div>
                                         
-                                        <div class="toggle-card">
-                                            <span>링크 공개</span>
-                                            <div class="toggle-switch active" onclick="toggleSwitch(this)">
-                                                <img src="icon/icon-toggle-on.svg" alt="토글 켜짐" class="toggle-icon">
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
 
@@ -226,7 +225,7 @@
                                             <span class="badge-label">PRO</span>
                                         </div>
                                         <button class="section-toggle" onclick="toggleAccordion(this)">
-                                            <img src="icon/icon-arrowdown.svg" alt="펼치기" width="24" height="24">
+                                            <img src="resource/button-toggle-off.svg" alt="펼치기">
                                         </button>
                                     </div>
                                     
@@ -236,11 +235,8 @@
                                             <div class="preview-card sticker">
                                                 <div class="preview-img-area"></div>
                                                 <div class="preview-content">
-                                                    <div class="sticker-badge">
-                                                        <span>sticker</span>
-                                                    </div>
                                                     <div class="preview-text-area">
-                                                        <p>text</p>
+                                                        <p></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -249,20 +245,18 @@
                                         <!-- 스티커 추가/삭제 -->
                                         <div class="sticker-management">
                                             <h3>스티커 추가/삭제 (꾹 눌러서 순서 이동)</h3>
-                                            <div class="sticker-items">
-                                                <div class="sticker-item">
-                                                    <div class="sticker-preview-item">
-                                                        <div class="sticker-badge">
-                                                            <span>sticker</span>
+                                            <div class="sticker-items" id="sticker-items-container">
+                                                <div class="sticker-item" data-sticker-id="1" data-background-color="#ffffff" data-text-color="#000000">
+                                                    <div class="sticker-preview-item selected" onclick="selectSticker(this)">
+                                                        <div class="sticker-badge" style="background-color: #ffffff; color: #000000; border: 1px solid #d1d5db;">
+                                                            <span>꾸며봐요</span>
                                                         </div>
-                                                        <button class="remove-btn">
-                                                            <img src="icon/icon-clear.svg" alt="삭제" width="16" height="16">
-                                                        </button>
+                                                        <img class="remove-btn" src="icon/icon-remove.svg" alt="삭제" width="24" height="24" onclick="removeSticker(this, event)">
                                                     </div>
-                                                    <button class="add-sticker-btn">
-                                                        <img src="icon/icon-plus.svg" alt="추가" width="24" height="24">
-                                                    </button>
                                                 </div>
+                                                <button class="add-sticker-btn" onclick="addSticker()">
+                                                    <img src="icon/icon-plus.svg" alt="추가" width="24" height="24">
+                                                </button>
                                             </div>
                                         </div>
                                         
@@ -271,9 +265,7 @@
                                             <label class="input-label">내용 입력</label>
                                             <div class="input-field active">
                                                 <input type="text" placeholder="sticker" value="꾸며봐요">
-                                                <button class="clear-btn">
-                                                    <img src="icon/icon-clear.svg" alt="지우기" width="16" height="16">
-                                                </button>
+                                                <img class="clear-btn" src="icon/icon-clear.svg" alt="지우기" width="24" height="24" onclick="clearInput(this)">
                                             </div>
                                         </div>
                                         
@@ -307,22 +299,25 @@
                                         <!-- 텍스트 색상 -->
                                         <div class="color-picker">
                                             <label class="input-label">텍스트 색상</label>
-                                            <div class="color-options">
-                                                <button class="color-option">
+                                            <div class="text-color-options">
+                                                <button class="text-color-option" onclick="selectTextColor(this, 'custom')">
                                                     <div class="color-circle">
                                                         <img src="icon/icon-color.svg" alt="색상 선택" width="24" height="24">
                                                     </div>
                                                 </button>
-                                                <button class="color-option">
+                                                <button class="text-color-option" onclick="selectTextColor(this, '#ffffff')">
+                                                    <div class="color-circle white"></div>
+                                                </button>
+                                                <button class="text-color-option selected" onclick="selectTextColor(this, '#000000')">
                                                     <div class="color-circle black"></div>
                                                 </button>
-                                                <button class="color-option">
+                                                <button class="text-color-option" onclick="selectTextColor(this, '#ec5aa1')">
                                                     <div class="color-circle pink"></div>
                                                 </button>
-                                                <button class="color-option">
+                                                <button class="text-color-option" onclick="selectTextColor(this, '#ee7477')">
                                                     <div class="color-circle red"></div>
                                                 </button>
-                                                <button class="color-option">
+                                                <button class="text-color-option" onclick="selectTextColor(this, '#f4c05f')">
                                                     <div class="color-circle orange"></div>
                                                 </button>
                                             </div>
@@ -331,22 +326,28 @@
                                         <!-- 배경 색상 -->
                                         <div class="color-picker">
                                             <label class="input-label">배경 색상</label>
-                                            <div class="color-options">
-                                                <button class="color-option">
+                                            <div class="background-color-options">
+                                                <button class="background-color-option" onclick="selectBackgroundColor(this, 'custom')">
                                                     <div class="color-circle">
                                                         <img src="icon/icon-color.svg" alt="색상 선택" width="24" height="24">
                                                     </div>
                                                 </button>
-                                                <button class="color-option">
+                                                <button class="background-color-option selected" onclick="selectBackgroundColor(this, '#ffffff')">
+                                                    <div class="color-circle white"></div>
+                                                </button>
+                                                <button class="background-color-option" onclick="selectBackgroundColor(this, '#000000')">
+                                                    <div class="color-circle black"></div>
+                                                </button>
+                                                <button class="background-color-option" onclick="selectBackgroundColor(this, '#84fac1')">
                                                     <div class="color-circle green"></div>
                                                 </button>
-                                                <button class="color-option">
+                                                <button class="background-color-option" onclick="selectBackgroundColor(this, '#6abef6')">
                                                     <div class="color-circle blue"></div>
                                                 </button>
-                                                <button class="color-option">
+                                                <button class="background-color-option" onclick="selectBackgroundColor(this, '#a874f9')">
                                                     <div class="color-circle purple"></div>
                                                 </button>
-                                                <button class="color-option">
+                                                <button class="background-color-option" onclick="selectBackgroundColor(this, '#ca56eb')">
                                                     <div class="color-circle violet"></div>
                                                 </button>
                                             </div>
@@ -385,7 +386,7 @@
                                                     <p>text</p>
                                                 </div>
                                                 <div class="business-badge">
-                                                    <img src="icon/icon-star.svg" alt="별" width="20" height="20">
+                                                    <img src="icon/icon-mail.svg" alt="메일" width="20" height="20">
                                                     <span>비즈니스 제안</span>
                                                 </div>
                                             </div>
@@ -395,9 +396,6 @@
                                                 <div class="link-block sticker">
                                                     <div class="block-img"></div>
                                                     <div class="block-content">
-                                                        <div class="sticker-badge">
-                                                            <span>sticker</span>
-                                                        </div>
                                                         <div class="preview-text">
                                                             <p>text</p>
                                                         </div>
@@ -482,15 +480,25 @@
             if (button.classList.contains('active')) {
                 // 펼치기 - section-content 표시
                 content.style.display = 'block';
-                arrow.src = 'icon/icon-arrowup.svg';
+                arrow.src = 'resource/button-toggle-on.svg';
                 arrow.alt = '접기';
                 console.log('Expanded');
+                
+                // 스티커 섹션이면 미리보기 스티커 표시
+                if (section.classList.contains('sticker-section')) {
+                    updatePreviewStickers();
+                }
             } else {
                 // 접기 - section-content 숨기기
                 content.style.display = 'none';
-                arrow.src = 'icon/icon-arrowdown.svg';
+                arrow.src = 'resource/button-toggle-off.svg';
                 arrow.alt = '펼치기';
                 console.log('Collapsed');
+                
+                // 스티커 섹션이면 미리보기 스티커 숨기기
+                if (section.classList.contains('sticker-section')) {
+                    hidePreviewStickers();
+                }
             }
         }
 
@@ -520,19 +528,319 @@
 
         // 실시간 텍스트 반영 함수 (HTML에 직접 추가)
         function updatePreviewText(value) {
+            // 모든 preview-text-area의 텍스트 업데이트
+            const previewTextAreas = document.querySelectorAll('.preview-text-area p');
+            previewTextAreas.forEach(area => {
+                area.textContent = value;
+            });
+            
+            // 기존 preview-text도 업데이트 (호환성 유지)
             const previewText = document.querySelector('.preview-text p');
             if (previewText) {
                 previewText.textContent = value;
-                console.log('Preview text updated:', value);
             }
+            
+            console.log('Preview text updated:', value);
         }
 
         // 스티커 인풋필드 동기화 함수
         function updateStickerBadge(value) {
-            const stickerBadge = document.querySelector('.preview-sidebar .sticker-badge span');
-            if (stickerBadge) {
-                stickerBadge.textContent = value || '꾸며봐요';
-                console.log('Sticker badge updated:', value || '꾸며봐요');
+            const selectedSticker = document.querySelector('.sticker-preview-item.selected');
+            if (selectedSticker) {
+                const badge = selectedSticker.querySelector('.sticker-badge span');
+                if (badge) {
+                    badge.textContent = value || '꾸며봐요';
+                }
+                
+                // 미리보기 영역의 해당 스티커도 업데이트
+                updatePreviewStickers();
+            }
+            console.log('Selected sticker badge updated:', value || '꾸며봐요');
+        }
+
+        // 미리보기 영역의 스티커들 업데이트
+        function updatePreviewStickers() {
+            const stickerItems = document.querySelectorAll('.sticker-item');
+            const previewContent = document.querySelector('.preview-content');
+            const blockContent = document.querySelector('.block-content');
+            
+            // 기존 미리보기 스티커 컨테이너 제거
+            const existingPreviewContainer = previewContent.querySelector('.sticker-badges-container');
+            if (existingPreviewContainer) {
+                existingPreviewContainer.remove();
+            }
+            
+            const existingBlockContainer = blockContent.querySelector('.sticker-badges-container');
+            if (existingBlockContainer) {
+                existingBlockContainer.remove();
+            }
+            
+            // preview-content용 스티커 컨테이너 생성
+            const previewContainer = document.createElement('div');
+            previewContainer.className = 'sticker-badges-container';
+            
+            // block-content용 스티커 컨테이너 생성
+            const blockContainer = document.createElement('div');
+            blockContainer.className = 'sticker-badges-container';
+            
+            // 현재 스티커들을 컨테이너에 추가
+            stickerItems.forEach((item, index) => {
+                const badge = item.querySelector('.sticker-badge');
+                const badgeSpan = badge.querySelector('span');
+                const text = badgeSpan ? badgeSpan.textContent : '꾸며봐요';
+                
+                // 원본 스티커의 스타일 정보 가져오기
+                const backgroundColor = badge.style.backgroundColor || '#ffffff';
+                const color = badge.querySelector('span').style.color || '#000000';
+                const border = badge.style.border || '1px solid var(--color-gray-300)';
+                
+                // preview-content용 스티커 배지 추가
+                const previewSticker = document.createElement('div');
+                previewSticker.className = 'sticker-badge';
+                previewSticker.style.backgroundColor = backgroundColor;
+                previewSticker.style.color = color;
+                previewSticker.style.border = border;
+                previewSticker.innerHTML = `<span>${text}</span>`;
+                previewContainer.appendChild(previewSticker);
+                
+                // block-content용 스티커 배지 추가
+                const blockSticker = document.createElement('div');
+                blockSticker.className = 'sticker-badge';
+                blockSticker.style.backgroundColor = backgroundColor;
+                blockSticker.style.color = color;
+                blockSticker.style.border = border;
+                blockSticker.innerHTML = `<span>${text}</span>`;
+                blockContainer.appendChild(blockSticker);
+            });
+            
+            // 컨테이너를 각각의 content에 추가
+            previewContent.appendChild(previewContainer);
+            blockContent.appendChild(blockContainer);
+        }
+
+        // 미리보기 스티커 숨기기 함수
+        function hidePreviewStickers() {
+            const previewContent = document.querySelector('.preview-content');
+            const blockContent = document.querySelector('.block-content');
+            
+            // 기존 미리보기 스티커 컨테이너 제거
+            const existingPreviewContainer = previewContent.querySelector('.sticker-badges-container');
+            if (existingPreviewContainer) {
+                existingPreviewContainer.remove();
+            }
+            
+            const existingBlockContainer = blockContent.querySelector('.sticker-badges-container');
+            if (existingBlockContainer) {
+                existingBlockContainer.remove();
+            }
+        }
+
+        // 스티커 선택 함수
+        function selectSticker(element) {
+            // 모든 스티커에서 selected 클래스 제거
+            const allStickers = document.querySelectorAll('.sticker-preview-item');
+            allStickers.forEach(sticker => {
+                sticker.classList.remove('selected');
+            });
+            
+            // 선택된 스티커에 selected 클래스 추가
+            element.classList.add('selected');
+            
+            // 선택된 스티커의 텍스트를 입력 필드에 반영
+            const badgeText = element.querySelector('.sticker-badge span').textContent;
+            const stickerInput = document.querySelector('.sticker-section input[type="text"]');
+            if (stickerInput) {
+                stickerInput.value = badgeText;
+            }
+            
+            // 선택된 스티커의 색상에 맞게 컬러 옵션 동기화
+            syncColorOptions(element);
+            
+            console.log('Sticker selected:', badgeText);
+        }
+
+        // 컬러 옵션 동기화 함수
+        function syncColorOptions(stickerElement) {
+            const stickerItem = stickerElement.closest('.sticker-item');
+            if (!stickerItem) return;
+            
+            // 데이터 속성에서 색상 정보 가져오기
+            const backgroundColor = stickerItem.getAttribute('data-background-color');
+            const textColor = stickerItem.getAttribute('data-text-color');
+            
+            console.log('=== SYNC COLORS ===');
+            console.log('Sticker background:', backgroundColor);
+            console.log('Sticker text:', textColor);
+            
+            // 모든 컬러 옵션에서 selected 클래스 제거
+            document.querySelectorAll('.text-color-option, .background-color-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // 텍스트 색상 매칭
+            if (textColor) {
+                const textColorOptions = document.querySelectorAll('.text-color-option');
+                textColorOptions.forEach((option, index) => {
+                    const onclickAttr = option.getAttribute('onclick');
+                    if (onclickAttr) {
+                        const colorMatch = onclickAttr.match(/'([^']+)'/);
+                        if (colorMatch && colorMatch[1] !== 'custom') {
+                            const optionColor = colorMatch[1].toLowerCase();
+                            console.log(`Text option ${index}: ${optionColor} vs ${textColor.toLowerCase()} = ${optionColor === textColor.toLowerCase()}`);
+                            if (optionColor === textColor.toLowerCase()) {
+                                option.classList.add('selected');
+                                console.log(`Text option ${index} SELECTED!`);
+                            }
+                        }
+                    }
+                });
+            }
+            
+            // 배경 색상 매칭
+            if (backgroundColor) {
+                const backgroundColorOptions = document.querySelectorAll('.background-color-option');
+                backgroundColorOptions.forEach((option, index) => {
+                    const onclickAttr = option.getAttribute('onclick');
+                    if (onclickAttr) {
+                        const colorMatch = onclickAttr.match(/'([^']+)'/);
+                        if (colorMatch && colorMatch[1] !== 'custom') {
+                            const optionColor = colorMatch[1].toLowerCase();
+                            console.log(`Background option ${index}: ${optionColor} vs ${backgroundColor.toLowerCase()} = ${optionColor === backgroundColor.toLowerCase()}`);
+                            if (optionColor === backgroundColor.toLowerCase()) {
+                                option.classList.add('selected');
+                                console.log(`Background option ${index} SELECTED!`);
+                            }
+                        }
+                    }
+                });
+            }
+            
+            console.log('=== END SYNC ===');
+        }
+
+        // 색상 매칭 함수
+        function colorsMatch(color1, color2) {
+            if (!color1 || !color2) return false;
+            
+            // 색상을 정규화하여 비교
+            const normalizeColor = (color) => {
+                if (!color) return '';
+                
+                // rgb(r, g, b) 형태를 #rrggbb로 변환
+                if (color.startsWith('rgb')) {
+                    const match = color.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
+                    if (match) {
+                        const r = parseInt(match[1]).toString(16).padStart(2, '0');
+                        const g = parseInt(match[2]).toString(16).padStart(2, '0');
+                        const b = parseInt(match[3]).toString(16).padStart(2, '0');
+                        return `#${r}${g}${b}`;
+                    }
+                }
+                
+                // 이미 hex 형태인 경우
+                if (color.startsWith('#')) {
+                    return color.toLowerCase();
+                }
+                
+                return color.toLowerCase();
+            };
+            
+            const norm1 = normalizeColor(color1);
+            const norm2 = normalizeColor(color2);
+            
+            return norm1 === norm2;
+        }
+
+        // 스티커 추가 함수
+        function addSticker() {
+            const container = document.getElementById('sticker-items-container');
+            const existingStickers = container.querySelectorAll('.sticker-item');
+            
+            // 최대 3개 제한
+            if (existingStickers.length >= 3) {
+                alert('스티커는 최대 3개까지 생성할 수 있습니다.');
+                return;
+            }
+            
+            const newId = existingStickers.length + 1;
+            
+            // 새로운 스티커 아이템 생성
+            const newStickerItem = document.createElement('div');
+            newStickerItem.className = 'sticker-item';
+            newStickerItem.setAttribute('data-sticker-id', newId);
+            
+            newStickerItem.innerHTML = `
+                <div class="sticker-preview-item" onclick="selectSticker(this)">
+                    <div class="sticker-badge" style="background-color: #ffffff; color: #000000; border: 1px solid #d1d5db;">
+                        <span>꾸며봐요</span>
+                    </div>
+                    <img class="remove-btn" src="icon/icon-remove.svg" alt="삭제" width="24" height="24" onclick="removeSticker(this, event)">
+                </div>
+            `;
+            
+            // 새 스티커에 기본 색상 데이터 속성 설정
+            newStickerItem.setAttribute('data-background-color', '#ffffff');
+            newStickerItem.setAttribute('data-text-color', '#000000');
+            
+            // 추가 버튼 앞에 새로운 스티커 삽입
+            const addButton = container.querySelector('.add-sticker-btn');
+            container.insertBefore(newStickerItem, addButton);
+            
+            // 새로 추가된 스티커를 선택
+            selectSticker(newStickerItem.querySelector('.sticker-preview-item'));
+            
+            // 미리보기 영역 업데이트
+            updatePreviewStickers();
+            
+            // + 버튼 표시/숨김 업데이트
+            updateAddButtonVisibility();
+            
+            console.log('New sticker added with ID:', newId);
+        }
+
+        // 스티커 삭제 함수
+        function removeSticker(button, event) {
+            event.stopPropagation(); // 이벤트 버블링 방지
+            
+            const stickerItem = button.closest('.sticker-item');
+            const isSelected = stickerItem.querySelector('.sticker-preview-item').classList.contains('selected');
+            
+            // 스티커가 1개만 남아있으면 삭제하지 않음
+            const allStickers = document.querySelectorAll('.sticker-item');
+            if (allStickers.length <= 1) {
+                alert('최소 1개의 스티커는 유지해야 합니다.');
+                return;
+            }
+            
+            // 선택된 스티커가 삭제되는 경우, 첫 번째 스티커를 선택
+            if (isSelected) {
+                const firstSticker = document.querySelector('.sticker-item:not([data-sticker-id="' + stickerItem.getAttribute('data-sticker-id') + '"]');
+                if (firstSticker) {
+                    selectSticker(firstSticker.querySelector('.sticker-preview-item'));
+                }
+            }
+            
+            stickerItem.remove();
+            
+            // 미리보기 영역 업데이트
+            updatePreviewStickers();
+            
+            // + 버튼 표시/숨김 업데이트
+            updateAddButtonVisibility();
+            
+            console.log('Sticker removed');
+        }
+
+        // + 버튼 표시/숨김 관리 함수
+        function updateAddButtonVisibility() {
+            const container = document.getElementById('sticker-items-container');
+            const existingStickers = container.querySelectorAll('.sticker-item');
+            const addButton = container.querySelector('.add-sticker-btn');
+            
+            if (existingStickers.length >= 3) {
+                addButton.style.display = 'none';
+            } else {
+                addButton.style.display = 'flex';
             }
         }
 
@@ -550,6 +858,74 @@
             }
             
             console.log('Toggle switch clicked, active:', element.classList.contains('active'));
+        }
+
+        // 텍스트 색상 선택 함수
+        function selectTextColor(button, color) {
+            // 모든 텍스트 색상 옵션에서 selected 클래스 제거
+            const textColorOptions = document.querySelectorAll('.text-color-option');
+            textColorOptions.forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // 선택된 버튼에 selected 클래스 추가
+            button.classList.add('selected');
+            
+            // 선택된 스티커의 텍스트 색상만 변경
+            const selectedSticker = document.querySelector('.sticker-preview-item.selected');
+            if (selectedSticker && color !== 'custom') {
+                const badge = selectedSticker.querySelector('.sticker-badge span');
+                if (badge) {
+                    badge.style.color = color;
+                }
+                
+                // 스티커 아이템에 색상 정보 저장
+                const stickerItem = selectedSticker.closest('.sticker-item');
+                if (stickerItem) {
+                    stickerItem.setAttribute('data-text-color', color);
+                }
+                
+                // 미리보기 영역의 해당 스티커도 업데이트
+                updatePreviewStickers();
+            }
+            console.log('Text color changed to:', color);
+        }
+
+        // 배경 색상 선택 함수
+        function selectBackgroundColor(button, color) {
+            // 모든 배경 색상 옵션에서 selected 클래스 제거
+            const backgroundColorOptions = document.querySelectorAll('.background-color-option');
+            backgroundColorOptions.forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // 선택된 버튼에 selected 클래스 추가
+            button.classList.add('selected');
+            
+            // 선택된 스티커의 배경 색상만 변경
+            const selectedSticker = document.querySelector('.sticker-preview-item.selected');
+            if (selectedSticker && color !== 'custom') {
+                const badge = selectedSticker.querySelector('.sticker-badge');
+                if (badge) {
+                    badge.style.backgroundColor = color;
+                    // 흰색일 때만 그레이300 보더, 다른 색상일 때는 배경색과 동일한 보더
+                    if (color === '#ffffff') {
+                        badge.style.border = '1px solid var(--color-gray-300)';
+                    } else {
+                        badge.style.border = `1px solid ${color}`;
+                    }
+                }
+                
+                // 스티커 아이템에 색상 정보 저장
+                const stickerItem = selectedSticker.closest('.sticker-item');
+                if (stickerItem) {
+                    stickerItem.setAttribute('data-background-color', color);
+                }
+                
+                // 미리보기 영역의 해당 스티커도 업데이트
+                updatePreviewStickers();
+            }
+            console.log('Background color changed to:', color);
         }
 
         // 페이지 로드 시 초기값 동기화
@@ -587,10 +963,38 @@
                 // 초기 상태: 접힘
                 toggleButton.classList.remove('active');
                 content.style.display = 'none';
-                arrow.src = 'icon/icon-arrowdown.svg';
+                arrow.src = 'resource/button-toggle-off.svg';
                 arrow.alt = '펼치기';
                 
+                // 우측 미리보기에서 스티커 숨기기
+                hidePreviewStickers();
+                
                 console.log('Sticker section initialized as collapsed');
+            }
+            
+            // 초기 색상 설정 (흰색 배경, 검은색 텍스트)
+            const stickerBadges = document.querySelectorAll('.sticker-badge');
+            if (stickerBadges.length > 0) {
+                stickerBadges.forEach(badge => {
+                    badge.style.backgroundColor = '#ffffff';
+                    badge.style.border = '1px solid var(--color-gray-300)'; // 흰색 배경이므로 그레이300 보더
+                    const span = badge.querySelector('span');
+                    if (span) {
+                        span.style.color = '#000000';
+                    }
+                });
+                console.log('Initial colors applied: white background, black text');
+            }
+            
+            // 초기 미리보기 스티커 설정 (스티커 섹션이 OFF이므로 호출하지 않음)
+            
+            // + 버튼 표시/숨김 초기화
+            updateAddButtonVisibility();
+            
+            // 초기 스티커 선택 및 색상 동기화
+            const initialSticker = document.querySelector('.sticker-preview-item.selected');
+            if (initialSticker) {
+                syncColorOptions(initialSticker);
             }
         });
     </script>

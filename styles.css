@@ -1,8 +1,12 @@
+/* Pretendard 폰트 import */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+
 /* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
 }
 
 html {
@@ -2245,13 +2249,15 @@ body {
     border-radius: var(--radius-500);
     padding: var(--spacing-400);
     margin-bottom: var(--spacing-200);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
 .preview-background {
     background-color: var(--color-gray-100);
     padding: var(--spacing-300);
     border-radius: var(--radius-500);
-    margin-bottom: var(--spacing-200);
     display: flex;
     justify-content: center;
 }
@@ -2289,7 +2295,6 @@ body {
 
 /* 스타일 선택 */
 .style-selection {
-    margin-bottom: var(--spacing-200);
 }
 
 .style-options {
@@ -2340,11 +2345,6 @@ body {
 }
 
 .input-group {
-    margin-bottom: var(--spacing-300);
-}
-
-.input-group:last-child {
-    margin-bottom: 0;
 }
 
 .input-label {
@@ -2391,13 +2391,12 @@ body {
     transform: translateY(-50%);
     width: 24px;
     height: 24px;
-    background-color: var(--color-gray-300);
-    border: none;
-    border-radius: var(--radius-400);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.clear-btn:hover {
+    opacity: 0.7;
 }
 
 /* 섹션 헤더 */
@@ -2429,11 +2428,45 @@ body {
 }
 
 .badge-label {
-    background-color: var(--color-orange-800);
-    color: var(--color-white);
-    font: var(--font-small-text-2-bold);
-    padding: var(--spacing-025) var(--spacing-100);
-    border-radius: var(--radius-900);
+    background-color: transparent;
+    color: var(--color-orange-800);
+    font: var(--font-small-text-2-regular);
+    padding: var(--spacing-050) var(--spacing-100);
+    border: 1px solid var(--color-orange-800);
+    border-radius: var(--radius-400);
+    box-sizing: border-box;
+    line-height: 1;
+    display: inline-block;
+}
+
+.section-title-group {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-100);
+}
+
+/* 이미지 섹션 */
+.image-section {
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.image-upload-area {
+    width: 80px;
+    height: 80px;
+    background-color: var(--color-gray-200);
+    border-radius: var(--radius-300);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.image-upload-area:hover {
+    background-color: var(--color-gray-300);
 }
 
 /* 링크 공개 여부 섹션 */
@@ -2455,7 +2488,6 @@ body {
 .radio-options {
     display: flex;
     gap: var(--spacing-300);
-    margin-bottom: var(--spacing-150);
 }
 
 .radio-option {
@@ -2470,7 +2502,7 @@ body {
     cursor: pointer;
 }
 
-.radio-option span {
+.radio-option span:not(.badge-label) {
     font: var(--font-paragraph-2-regular);
     color: var(--color-gray-800);
 }
@@ -2542,6 +2574,30 @@ body {
     flex: 1;
 }
 
+.sticker-badges-container {
+    display: flex;
+    gap: var(--spacing-050);
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.preview-content .sticker-badge {
+    margin: 0;
+}
+
+.block-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-050);
+    flex: 1;
+}
+
+.block-content .sticker-badge {
+    margin: 0;
+}
+
 .sticker-badge {
     background-color: var(--color-white);
     border: 1px solid var(--color-gray-300);
@@ -2549,6 +2605,10 @@ body {
     padding: var(--spacing-025) var(--spacing-100);
     font: var(--font-small-text-1-regular);
     color: var(--color-gray-800);
+    height: 22px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
 }
 
 /* 스티커 관리 */
@@ -2572,7 +2632,7 @@ body {
 
 .sticker-preview-item {
     background-color: var(--color-white);
-    border: 1px solid var(--color-gray-700);
+    border: 1px solid var(--color-gray-300);
     border-radius: var(--radius-300);
     height: 48px;
     padding: 0 var(--spacing-300);
@@ -2580,6 +2640,16 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sticker-preview-item:hover {
+    border-color: var(--color-gray-500);
+}
+
+.sticker-preview-item.selected {
+    border-color: var(--color-orange-800);
 }
 
 .remove-btn {
@@ -2588,13 +2658,12 @@ body {
     right: -8px;
     width: 24px;
     height: 24px;
-    background-color: var(--color-gray-300);
-    border: none;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.remove-btn:hover {
+    opacity: 0.7;
 }
 
 .add-sticker-btn {
@@ -2657,12 +2726,50 @@ body {
     align-items: center;
 }
 
+.text-color-options {
+    display: flex;
+    gap: var(--spacing-150);
+    align-items: center;
+}
+
+.background-color-options {
+    display: flex;
+    gap: var(--spacing-150);
+    align-items: center;
+}
+
 .color-option {
     background: none;
     border: none;
     padding: var(--spacing-050);
     border-radius: var(--radius-900);
     cursor: pointer;
+}
+
+.text-color-option {
+    background: none;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.text-color-option.selected .color-circle {
+    border: 2px solid var(--color-orange-800);
+    box-shadow: 0 0 0 1px var(--color-orange-800);
+}
+
+.background-color-option {
+    background: none;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.background-color-option.selected .color-circle {
+    border: 2px solid var(--color-orange-800);
+    box-shadow: 0 0 0 1px var(--color-orange-800);
 }
 
 .color-circle {
@@ -2680,6 +2787,7 @@ body {
 .color-circle.pink { background-color: #ec5aa1; }
 .color-circle.red { background-color: #ee7477; }
 .color-circle.orange { background-color: #f4c05f; }
+.color-circle.white { background-color: #ffffff; border: 1px solid #e0e0e0; }
 .color-circle.green { background-color: #84fac1; }
 .color-circle.blue { background-color: #6abef6; }
 .color-circle.purple { background-color: #a874f9; }
@@ -2801,14 +2909,14 @@ body {
 .business-badge {
     background-color: var(--color-gray-700);
     border-radius: var(--radius-700);
-    padding: var(--spacing-150) var(--spacing-200);
+    padding: var(--spacing-100);
     display: flex;
     align-items: center;
     gap: var(--spacing-100);
 }
 
 .business-badge span {
-    font: var(--font-paragraph-2-regular);
+    font: var(--font-small-text-1-regular);
     color: var(--color-white);
 }
 
